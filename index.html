@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portafolio | Crea tu sello digital</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="nav">
+        <div class="brand">Jhoan Mauricio Gaitan Rodirguez</div>
+        <nav>
+          <ul>
+            <li><a href="#proyectos">Proyectos</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#trayectoria">Trayectoria</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+          </ul>
+        </nav>
+        <div class="cube-wrap header-cube">
+          <button class="code-cube" id="code-cube" type="button" aria-label="Activar giro de código">
+            <span>&lt;/&gt;</span>
+          </button>
+        </div>
+        <button class="hamburger" aria-label="Abrir menú" onclick="toggleMenu()">Menú</button>
+      </div>
+      <div class="mobile-nav" id="mobile-nav">
+        <a href="#proyectos">Proyectos</a>
+        <a href="#skills">Skills</a>
+        <a href="#trayectoria">Trayectoria</a>
+        <a href="#contacto">Contacto</a>
+      </div>
+    </header>
+
+    <div class="floating a"></div>
+    <div class="floating b"></div>
+
+    <section class="hero">
+      <div class="hero-grid">
+        <div>
+          <div class="badge"><i></i> Disponible para nuevos retos</div>
+          <h1>Hola, soy <span>Mauricio</span>. Diseño y desarrollo experiencias digitales con carácter futurista.</h1>
+          <p class="lead">Conecto estrategia, visual y código para lanzar productos y marcas que se sientan modernas, rápidas y memorables.</p>
+          <div class="actions">
+            <button class="cta" onclick="document.getElementById('proyectos').scrollIntoView({behavior:'smooth'})">Ver proyectos</button>
+          </div>
+        </div>
+        <div class="hero-side">
+          <div class="hero-card">
+            <div class="chip-row">
+              <div class="chip">UI/UX</div>
+              <div class="chip">Frontend</div>
+              <div class="chip">Branding</div>
+              <div class="chip">Prototipos</div>
+            </div>
+            <p style="margin-top:10px;">Combino diseño, motion y desarrollo para convertir ideas en productos digitales listos para producción. Trabajo con equipos remotos y con founders de early stage.</p>
+            <div class="stat-grid">
+              <div class="stat">
+                <h3>30+</h3>
+                <span>Proyectos lanzados</span>
+              </div>
+              <div class="stat">
+                <h3>12</h3>
+                <span>Marcas rediseñadas</span>
+              </div>
+              <div class="stat">
+                <h3>4.9★</h3>
+                <span>Feedback promedio</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="proyectos">
+      <div class="section-heading">
+        <div>
+          <h2>Proyectos destacados</h2>
+          <p>Selección curada de trabajos recientes. Cada proyecto equilibra estética, claridad y performance.</p>
+        </div>
+        <div class="pill"><i></i><span>Ready to ship</span></div>
+      </div>
+      <div class="grid projects">
+        <div class="card reveal">
+          <h3>Pulse Analytics</h3>
+          <p>Dashboard modular para startups healthtech con visualizaciones en tiempo real y modo compacto.</p>
+          <div class="tag-row">
+            <div class="tag">Next.js</div>
+            <div class="tag">Charts</div>
+            <div class="tag">Design System</div>
+          </div>
+        </div>
+        <div class="card reveal">
+          <h3>Nova ID</h3>
+          <p>Identidad visual y landing para herramienta SaaS de autenticación. Concepto neón, hero animado y copy claro.</p>
+          <div class="tag-row">
+            <div class="tag">Brand</div>
+            <div class="tag">Framer Motion</div>
+            <div class="tag">SEO</div>
+          </div>
+        </div>
+        <div class="card reveal">
+          <h3>Orbit Studio</h3>
+          <p>Sitio portfolio de estudio creativo con secciones full-bleed, interacciones suaves y tipografía expresiva.</p>
+          <div class="tag-row">
+            <div class="tag">GSAP</div>
+            <div class="tag">Storytelling</div>
+            <div class="tag">Responsive</div>
+          </div>
+        </div>
+        <div class="card reveal">
+          <h3>Lyra Mobile</h3>
+          <p>UI Kit móvil con componentes nativos y variaciones temáticas. Documentación interactiva y tokens de diseño.</p>
+          <div class="tag-row">
+            <div class="tag">Design Tokens</div>
+            <div class="tag">Figma</div>
+            <div class="tag">React Native</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="section-heading">
+        <div>
+          <h2>Stack y superpoderes</h2>
+          <p>Herramientas y disciplinas con las que creo productos end-to-end.</p>
+        </div>
+        <div class="pill"><i></i><span>Multidisciplinario</span></div>
+      </div>
+      <div class="grid skills">
+        <div class="card">
+          <h3>Experto en</h3>
+          <div class="skill-list">
+            <div class="skill">Figma</div>
+            <div class="skill">React / Next</div>
+            <div class="skill">TypeScript</div>
+            <div class="skill">CSS modular</div>
+            <div class="skill">Design systems</div>
+            <div class="skill">Prototipado</div>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Complemento</h3>
+          <div class="skill-list">
+            <div class="skill">Motion</div>
+            <div class="skill">3D ligero</div>
+            <div class="skill">SEO técnico</div>
+            <div class="skill">Copywriting</div>
+            <div class="skill">Testing UI</div>
+            <div class="skill">Accesibilidad</div>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Workflow</h3>
+          <p style="margin-top:8px;">Proceso claro de discovery, prototipado, validación y entrega. Comunicación transparente con demos semanales.</p>
+          <div class="tag-row">
+            <div class="tag">Entrega continua</div>
+            <div class="tag">Sistemas escalables</div>
+            <div class="tag">Remote-first</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="trayectoria">
+      <div class="section-heading">
+        <div>
+          <h2>Trayectoria</h2>
+          <p>Roles clave y colaboraciones recientes.</p>
+        </div>
+        <div class="pill"><i></i><span>+5 años</span></div>
+      </div>
+      <div class="timeline">
+        <div class="card timeline-card reveal">
+          <h3>Lead Product Designer · Atlas Labs</h3>
+          <small>2023 — Presente</small>
+          <p>Rediseño de plataforma B2B, sistema de componentes y handoff directo a frontend.</p>
+        </div>
+        <div class="card timeline-card reveal">
+          <h3>Senior Frontend · Freestyle</h3>
+          <small>2021 — 2023</small>
+          <p>Lideré la capa de UI en proyectos fintech con énfasis en rendimiento y accesibilidad.</p>
+        </div>
+        <div class="card timeline-card reveal">
+          <h3>Product Designer · Freelance</h3>
+          <small>2019 — 2021</small>
+          <p>Branding y webs para startups early stage. Diseño de identidades, landings y prototipos interactivos.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto">
+      <div class="section-heading">
+        <div>
+          <h2>Hablemos</h2>
+          <p>Cuéntame sobre tu próximo producto, rebranding o MVP. Respondo en 24h.</p>
+        </div>
+      </div>
+      <div class="contact">
+        <div>
+          <div class="badge"><i></i> Disponible remoto</div>
+          <h3 style="margin:10px 0 8px;">Agenda una llamada o envía un correo</h3>
+          <p>Prefiero sesiones breves para alinear objetivos y plantear un plan con tiempos claros.</p>
+          <div class="actions" style="margin-top:16px;">
+            <a class="cta" href="mailto:tucorreo@example.com">tucorreo@example.com</a>
+            <a class="ghost" href="https://calendly.com" target="_blank" rel="noreferrer">Reservar 15 min</a>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Atajos</h3>
+          <div class="social-row">
+            <a class="tag" href="#" target="_blank" rel="noreferrer">LinkedIn</a>
+            <a class="tag" href="#" target="_blank" rel="noreferrer">Behance</a>
+            <a class="tag" href="#" target="_blank" rel="noreferrer">Dribbble</a>
+            <a class="tag" href="#" target="_blank" rel="noreferrer">GitHub</a>
+          </div>
+          <p style="margin-top:12px;">Actualiza los enlaces con tus perfiles. Si quieres, integra un formulario con Netlify o Formspree.</p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      Hecho a mano con buen café. Optimizado para GitHub Pages.
+    </footer>
+  </div>
+  <button class="to-top" id="to-top" aria-label="Volver al inicio">&uarr;</button>
+
+  <script src="script.js"></script>
+</body>
+</html>
