@@ -87,7 +87,7 @@
         <div class="pill"><i></i><span>Ready to ship</span></div>
       </div>
       <div class="grid projects">
-        <div class="card reveal">
+        <div class="card reveal project-card" data-title="Pulse Analytics" data-desc="Dashboard modular para healthtech con visualizaciones en tiempo real, modo compacto y alertas configurables." data-func="Métricas en vivo|Módulos reordenables|Dark/Light mode|Alertas y exportación CSV">
           <h3>Pulse Analytics</h3>
           <p>Dashboard modular para startups healthtech con visualizaciones en tiempo real y modo compacto.</p>
           <div class="tag-row">
@@ -96,7 +96,7 @@
             <div class="tag">Design System</div>
           </div>
         </div>
-        <div class="card reveal">
+        <div class="card reveal project-card" data-title="Nova ID" data-desc="Landing SaaS de autenticación con concepto neón, hero animado y mensajes claros orientados a conversión." data-func="Flujo de signup|Sección pricing|Motion en hero|SEO técnico">
           <h3>Nova ID</h3>
           <p>Identidad visual y landing para herramienta SaaS de autenticación. Concepto neón, hero animado y copy claro.</p>
           <div class="tag-row">
@@ -105,7 +105,7 @@
             <div class="tag">SEO</div>
           </div>
         </div>
-        <div class="card reveal">
+        <div class="card reveal project-card" data-title="Orbit Studio" data-desc="Portfolio full-bleed para estudio creativo con storytelling, interacciones suaves y tipografía expresiva." data-func="Secciones full-bleed|Timeline interactivo|Galería filtrable|CTA de contacto rápido">
           <h3>Orbit Studio</h3>
           <p>Sitio portfolio de estudio creativo con secciones full-bleed, interacciones suaves y tipografía expresiva.</p>
           <div class="tag-row">
@@ -114,7 +114,7 @@
             <div class="tag">Responsive</div>
           </div>
         </div>
-        <div class="card reveal">
+        <div class="card reveal project-card" data-title="Lyra Mobile" data-desc="UI Kit móvil con componentes nativos y variaciones temáticas; documentación interactiva para equipos." data-func="Tokens de diseño|Variantes iOS/Android|Docs interactivas|Biblioteca de componentes">
           <h3>Lyra Mobile</h3>
           <p>UI Kit móvil con componentes nativos y variaciones temáticas. Documentación interactiva y tokens de diseño.</p>
           <div class="tag-row">
@@ -210,7 +210,7 @@
           <p>Prefiero sesiones breves para alinear objetivos y plantear un plan con tiempos claros.</p>
           <div class="actions" style="margin-top:16px;">
             <a class="cta" href="mailto:tucorreo@example.com">tucorreo@example.com</a>
-            <a class="ghost" href="https://calendly.com" target="_blank" rel="noreferrer">Reservar 15 min</a>
+            <a class="ghost" href="#proyectos">Ver portafolio completo</a>
           </div>
         </div>
         <div class="card">
@@ -230,7 +230,25 @@
       Hecho a mano con buen café. Optimizado para GitHub Pages.
     </footer>
   </div>
+  <div id="cursor-glow"></div>
   <button class="to-top" id="to-top" aria-label="Volver al inicio">&uarr;</button>
+
+  <div class="modal-backdrop" id="project-modal" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <button class="modal-close" id="modal-close" aria-label="Cerrar">×</button>
+      <h3 id="modal-title"></h3>
+      <p id="modal-desc" class="modal-desc"></p>
+      <div>
+        <h4 class="modal-subtitle">Funcionalidad</h4>
+        <ul id="modal-func" class="modal-list"></ul>
+      </div>
+      <div class="modal-gallery" id="modal-gallery">
+        <div class="modal-thumb placeholder">Mockup 1</div>
+        <div class="modal-thumb placeholder">Mockup 2</div>
+        <div class="modal-thumb placeholder">Mockup 3</div>
+      </div>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>

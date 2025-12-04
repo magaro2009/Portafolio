@@ -47,6 +47,35 @@ toTop.addEventListener("click", () => {
   window.scrollTo({ top: 0, behavior: "smooth" });
 });
 
+const cursorGlow = document.getElementById("cursor-glow");
+if (cursorGlow) {
+  let targetX = 0, targetY = 0;
+  let currentX = 0, currentY = 0;
+  let rafId = null;
+
+  const animate = () => {
+    currentX += (targetX - currentX) * 0.18;
+    currentY += (targetY - currentY) * 0.18;
+    cursorGlow.style.transform = `translate3d(${currentX}px, ${currentY}px, 0)`;
+    rafId = requestAnimationFrame(animate);
+  };
+
+  window.addEventListener("mousemove", (e) => {
+    targetX = e.clientX;
+    targetY = e.clientY;
+    cursorGlow.style.opacity = "1";
+    if (!rafId) rafId = requestAnimationFrame(animate);
+  });
+
+  window.addEventListener("mouseleave", () => {
+    cursorGlow.style.opacity = "0";
+    if (rafId) {
+      cancelAnimationFrame(rafId);
+      rafId = null;
+    }
+  });
+}
+
 const codeCube = document.getElementById("code-cube");
 if (codeCube) {
   codeCube.addEventListener("click", () => {
@@ -59,6 +88,61 @@ if (codeCube) {
     codeCube.classList.remove("spin-once");
   });
 }
+
+const modal = document.getElementById("project-modal");
+const modalTitle = document.getElementById("modal-title");
+const modalDesc = document.getElementById("modal-desc");
+const modalFunc = document.getElementById("modal-func");
+const modalClose = document.getElementById("modal-close");
+
+const openModal = (data) => {
+  if (!modal) return;
+  modalTitle.textContent = data.title || "";
+  modalDesc.textContent = data.desc || "";
+  modalFunc.innerHTML = "";
+  (data.func || []).forEach(item => {
+    const li = document.createElement("li");
+    li.textContent = item.trim();
+    modalFunc.appendChild(li);
+  });
+  modal.classList.add("show");
+  modal.setAttribute("aria-hidden", "false");
+};
+
+const closeModal = () => {
+  if (!modal) return;
+  modal.classList.remove("show");
+  modal.setAttribute("aria-hidden", "true");
+};
+
+if (modalClose) {
+  modalClose.addEventListener("click", closeModal);
+}
+if (modal) {
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) closeModal();
+  });
+}
+
+document.querySelectorAll(".project-card").forEach(card => {
+  card.setAttribute("tabindex", "0");
+  card.setAttribute("role", "button");
+  const handler = () => {
+    const funcs = (card.dataset.func || "").split("|").filter(Boolean);
+    openModal({
+      title: card.dataset.title,
+      desc: card.dataset.desc,
+      func: funcs
+    });
+  };
+  card.addEventListener("click", handler);
+  card.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      handler();
+    }
+  });
+});
 
 function toggleMenu() {
   const menu = document.getElementById("mobile-nav");
