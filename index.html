@@ -236,16 +236,34 @@
   <div class="modal-backdrop" id="project-modal" aria-hidden="true">
     <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
       <button class="modal-close" id="modal-close" aria-label="Cerrar">×</button>
-      <h3 id="modal-title"></h3>
-      <p id="modal-desc" class="modal-desc"></p>
-      <div>
-        <h4 class="modal-subtitle">Funcionalidad</h4>
-        <ul id="modal-func" class="modal-list"></ul>
+      <div class="modal-top">
+        <div>
+          <h3 id="modal-title"></h3>
+          <p class="modal-label">Cuaderno de proyecto</p>
+        </div>
+        <div class="page-controls" aria-label="Navegación de páginas">
+          <button class="page-btn" id="page-prev" aria-label="Página anterior">←</button>
+          <div class="page-indicator"><span id="page-current">1</span>/3</div>
+          <button class="page-btn" id="page-next" aria-label="Página siguiente">→</button>
+        </div>
       </div>
-      <div class="modal-gallery" id="modal-gallery">
-        <div class="modal-thumb placeholder">Mockup 1</div>
-        <div class="modal-thumb placeholder">Mockup 2</div>
-        <div class="modal-thumb placeholder">Mockup 3</div>
+      <div class="modal-pages">
+        <div class="modal-page active" data-page="1">
+          <h4 class="modal-subtitle">Descripción</h4>
+          <p id="modal-desc" class="modal-desc"></p>
+        </div>
+        <div class="modal-page" data-page="2">
+          <h4 class="modal-subtitle">Funcionalidades clave</h4>
+          <ul id="modal-func" class="modal-list"></ul>
+        </div>
+        <div class="modal-page" data-page="3">
+          <h4 class="modal-subtitle">Mockups</h4>
+          <div class="modal-gallery" id="modal-gallery">
+            <div class="modal-thumb placeholder">Mockup 1</div>
+            <div class="modal-thumb placeholder">Mockup 2</div>
+            <div class="modal-thumb placeholder">Mockup 3</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

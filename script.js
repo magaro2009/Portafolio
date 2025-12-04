@@ -94,6 +94,23 @@ const modalTitle = document.getElementById("modal-title");
 const modalDesc = document.getElementById("modal-desc");
 const modalFunc = document.getElementById("modal-func");
 const modalClose = document.getElementById("modal-close");
+const modalPages = Array.from(document.querySelectorAll(".modal-page"));
+const pagePrev = document.getElementById("page-prev");
+const pageNext = document.getElementById("page-next");
+const pageCurrent = document.getElementById("page-current");
+let currentPage = 1;
+
+const setPage = (page) => {
+  if (!modalPages.length) return;
+  const maxPage = modalPages.length;
+  currentPage = Math.min(Math.max(page, 1), maxPage);
+  modalPages.forEach((pane, idx) => {
+    pane.classList.toggle("active", idx === currentPage - 1);
+  });
+  if (pageCurrent) pageCurrent.textContent = currentPage;
+  if (pagePrev) pagePrev.disabled = currentPage === 1;
+  if (pageNext) pageNext.disabled = currentPage === maxPage;
+};
 
 const openModal = (data) => {
   if (!modal) return;
@@ -105,6 +122,7 @@ const openModal = (data) => {
     li.textContent = item.trim();
     modalFunc.appendChild(li);
   });
+  setPage(1);
   modal.classList.add("show");
   modal.setAttribute("aria-hidden", "false");
 };
@@ -122,6 +140,13 @@ if (modal) {
   modal.addEventListener("click", (e) => {
     if (e.target === modal) closeModal();
   });
+}
+
+if (pagePrev) {
+  pagePrev.addEventListener("click", () => setPage(currentPage - 1));
+}
+if (pageNext) {
+  pageNext.addEventListener("click", () => setPage(currentPage + 1));
 }
 
 document.querySelectorAll(".project-card").forEach(card => {
