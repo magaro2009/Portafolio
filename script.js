@@ -122,52 +122,29 @@ const buildGallery = (mockData = {}) => {
 
   files.forEach((file, idx) => {
     const cleanFolder = folder.replace(/\\/g, "/").replace(/\/+$/,"");
-    const thumb = document.createElement("div");
-    thumb.className = "modal-thumb placeholder";
-    thumb.textContent = cleanFolder ? `Sube ${cleanFolder}/${file}` : "Agrega una carpeta de mockups";
-    modalGallery.appendChild(thumb);
+    const relPath = cleanFolder ? `${cleanFolder}/${file}` : file;
+    const card = document.createElement("a");
+    card.className = "mock-link";
+    card.href = relPath;
+    card.target = "_blank";
+    card.rel = "noreferrer";
+    card.setAttribute("aria-label", `Abrir mockup ${file}`);
+    card.innerHTML = `
+      <div class="mock-img"></div>
+      <span class="mock-open">Abrir</span>
+    `;
+    modalGallery.appendChild(card);
 
     if (!cleanFolder) return;
     const img = new Image();
     img.alt = `Mockup ${idx + 1}`;
     img.loading = "lazy";
-
-    const relPath = `${cleanFolder}/${file}`;
-    const isFileProto = window.location.protocol === "file:";
-    const candidates = isFileProto
-      ? [
-          new URL(relPath, window.location.href).href,
-          new URL(`./${relPath}`, window.location.href).href
-        ]
-      : [
-          new URL(relPath, window.location.href).href,
-          new URL(relPath, window.location.origin + window.location.pathname).href,
-          new URL(relPath, window.location.origin + "/").href
-        ];
-    let attempt = 0;
-
-    const tryLoad = () => {
-      if (attempt >= candidates.length) {
-        thumb.classList.add("placeholder");
-        thumb.innerHTML = "";
-        thumb.textContent = `Sube ${relPath}`;
-        console.warn(`No se pudo cargar mockup: ${relPath}`, candidates);
-        return;
-      }
-      img.src = candidates[attempt];
-    };
-
     img.onload = () => {
-      thumb.classList.remove("placeholder");
-      thumb.innerHTML = "";
-      thumb.appendChild(img);
+      const holder = card.querySelector(".mock-img");
+      if (holder) holder.style.backgroundImage = `url(${relPath})`;
+      card.classList.add("mock-link--with-img");
     };
-    img.onerror = () => {
-      attempt += 1;
-      tryLoad();
-    };
-
-    tryLoad();
+    img.src = relPath;
   });
 
   if (modalMockNote) {

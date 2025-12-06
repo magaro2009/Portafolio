@@ -350,7 +350,33 @@ section::before {
 }
 .card:hover::after { opacity: 1; }
 .card h3 { font-size: 19px; margin-bottom: 6px; }
-.project-card { cursor: pointer; }
+.project-card {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  height: 320px;
+  gap: 8px;
+}
+.project-card p {
+  flex: 1;
+  max-height: 120px;
+  overflow-y: auto;
+  padding-right: 2px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(119, 247, 216, 0.6) rgba(255, 255, 255, 0.08);
+}
+.project-card p::-webkit-scrollbar {
+  width: 6px;
+}
+.project-card p::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 10px;
+}
+.project-card p::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, rgba(119, 247, 216, 0.8), rgba(127, 215, 255, 0.7));
+  border-radius: 10px;
+  box-shadow: inset 0 0 0 1px rgba(5, 16, 18, 0.5);
+}
 .project-card:focus-visible {
   outline: 2px solid var(--primary);
   outline-offset: 4px;
@@ -381,6 +407,7 @@ section::before {
 .project-card:focus-visible .click-hint span {
   transform: translateX(3px);
 }
+.click-hint { margin-top: auto; }
 .tag-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
 .tag {
   padding: 6px 10px;
@@ -661,37 +688,79 @@ footer {
   gap: 10px;
   margin-top: 12px;
 }
-.modal-thumb {
+.mock-link {
+  position: relative;
   border: 1px solid var(--stroke);
+  border-radius: 12px;
+  min-height: 110px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: linear-gradient(135deg, rgba(10, 14, 20, 0.5), rgba(6, 10, 16, 0.4));
+  color: var(--text);
+  text-decoration: none;
+  overflow: hidden;
+  transition: transform 180ms ease, border 180ms ease, box-shadow 180ms ease, background 180ms ease;
+}
+.mock-link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.55));
+  opacity: 0;
+  transition: opacity 180ms ease;
+}
+.mock-link:hover, .mock-link:focus-visible {
+  transform: translateY(-2px);
+  border-color: rgba(119, 247, 216, 0.5);
+  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.28);
+}
+.mock-link:hover::after, .mock-link:focus-visible::after { opacity: 1; }
+.mock-link--with-img {
+  color: #f7f9fb;
+}
+.mock-img {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.88;
+  filter: saturate(1.05);
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+.mock-link--with-img .mock-img { opacity: 1; }
+.mock-link:hover .mock-img, .mock-link:focus-visible .mock-img { transform: scale(1.02); }
+.mock-filename {
+  position: relative;
+  z-index: 1;
+  display: none;
+}
+.mock-open {
+  position: relative;
+  z-index: 1;
+  align-self: flex-start;
+  padding: 6px 8px;
   border-radius: 10px;
-  background: rgba(255, 255, 255, 0.06);
-  min-height: 90px;
-  display: grid;
-  place-items: center;
-  color: var(--muted);
+  background: rgba(5, 10, 16, 0.55);
+  border: 1px solid var(--stroke);
   font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  background: rgba(5, 10, 16, 0.7);
+  border-color: rgba(255, 255, 255, 0.1);
 }
-.modal-thumb img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 9px;
-  display: block;
-}
-.modal-thumb.placeholder {
-  border-style: dashed;
-  background: rgba(255, 255, 255, 0.03);
-  text-align: center;
-  padding: 8px;
 }
 .page-controls {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   padding: 6px 8px;
   border: 1px solid var(--stroke);
   border-radius: 12px;
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+  flex-wrap: nowrap;
+  white-space: nowrap;
 }
 .page-btn {
   width: 32px;
@@ -703,6 +772,9 @@ footer {
   font-weight: 800;
   cursor: pointer;
   transition: transform 160ms ease, border 160ms ease;
+  display: grid;
+  place-items: center;
+  line-height: 1;
 }
 .page-btn:hover:not(:disabled) { transform: translateY(-1px); border-color: rgba(119, 247, 216, 0.6); }
 .page-btn:disabled { opacity: 0.45; cursor: not-allowed; }
