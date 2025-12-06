@@ -102,6 +102,40 @@ const modalGallery = document.getElementById("modal-gallery");
 const modalMockNote = document.getElementById("modal-mock-note");
 let currentPage = 1;
 
+const imageLightbox = document.getElementById("image-lightbox");
+const imageLightboxImg = document.getElementById("image-lightbox-img");
+const imageLightboxClose = document.getElementById("image-lightbox-close");
+
+const openLightbox = (src, alt = "Mockup") => {
+  if (!imageLightbox || !imageLightboxImg) return;
+  imageLightboxImg.src = src;
+  imageLightboxImg.alt = alt;
+  imageLightbox.classList.add("show");
+  imageLightbox.setAttribute("aria-hidden", "false");
+};
+
+const closeLightbox = () => {
+  if (!imageLightbox || !imageLightboxImg) return;
+  imageLightbox.classList.remove("show");
+  imageLightbox.setAttribute("aria-hidden", "true");
+  imageLightboxImg.src = "";
+};
+
+if (imageLightbox) {
+  imageLightbox.addEventListener("click", (e) => {
+    if (e.target === imageLightbox) closeLightbox();
+  });
+}
+if (imageLightboxClose) {
+  imageLightboxClose.addEventListener("click", closeLightbox);
+}
+window.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") {
+    closeLightbox();
+    closeModal();
+  }
+});
+
 const setPage = (page) => {
   if (!modalPages.length) return;
   const maxPage = modalPages.length;
@@ -123,17 +157,17 @@ const buildGallery = (mockData = {}) => {
   files.forEach((file, idx) => {
     const cleanFolder = folder.replace(/\\/g, "/").replace(/\/+$/,"");
     const relPath = cleanFolder ? `${cleanFolder}/${file}` : file;
-    const card = document.createElement("a");
+    const card = document.createElement("button");
     card.className = "mock-link";
-    card.href = relPath;
-    card.target = "_blank";
-    card.rel = "noreferrer";
+    card.type = "button";
+    card.dataset.path = relPath;
     card.setAttribute("aria-label", `Abrir mockup ${file}`);
     card.innerHTML = `
       <div class="mock-img"></div>
       <span class="mock-open">Abrir</span>
     `;
     modalGallery.appendChild(card);
+    card.addEventListener("click", () => openLightbox(relPath, `Mockup ${idx + 1}`));
 
     if (!cleanFolder) return;
     const img = new Image();
