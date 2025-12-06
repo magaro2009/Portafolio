@@ -19,3 +19,4 @@ El despliegue activo esta en Railway: https://portafolio-production-d30b.up.rail
 - `style.css`: estilos y layout.
 - `script.js`: interacciones (menu movil, modal de proyectos, animaciones).
 - `a.png`: recurso grafico ("wallpaper") usado en el sitio.
+- Carpeta `mockups/`: subcarpetas por proyecto (`elite-logistica-ar`, `gestion-solicitudes-tecnicas`, `colegio-antonio-narino`, `plataforma-saas-servicios`). El modal busca ahi `01.png`, `02.png`, `03.png` (puedes subir mas y ajustar los nombres en `data-mock-files`).

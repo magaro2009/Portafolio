@@ -98,6 +98,8 @@ const modalPages = Array.from(document.querySelectorAll(".modal-page"));
 const pagePrev = document.getElementById("page-prev");
 const pageNext = document.getElementById("page-next");
 const pageCurrent = document.getElementById("page-current");
+const modalGallery = document.getElementById("modal-gallery");
+const modalMockNote = document.getElementById("modal-mock-note");
 let currentPage = 1;
 
 const setPage = (page) => {
@@ -112,6 +114,65 @@ const setPage = (page) => {
   if (pageNext) pageNext.disabled = currentPage === maxPage;
 };
 
+const buildGallery = (mockData = {}) => {
+  if (!modalGallery) return;
+  modalGallery.innerHTML = "";
+  const folder = mockData.folder || "";
+  const files = (mockData.files && mockData.files.length) ? mockData.files : ["01.png", "02.png", "03.png"];
+
+  files.forEach((file, idx) => {
+    const cleanFolder = folder.replace(/\\/g, "/").replace(/\/+$/,"");
+    const thumb = document.createElement("div");
+    thumb.className = "modal-thumb placeholder";
+    thumb.textContent = cleanFolder ? `Sube ${cleanFolder}/${file}` : "Agrega una carpeta de mockups";
+    modalGallery.appendChild(thumb);
+
+    if (!cleanFolder) return;
+    const img = new Image();
+    img.alt = `Mockup ${idx + 1}`;
+    img.loading = "lazy";
+
+    const isFileProto = window.location.protocol === "file:";
+    const paths = isFileProto
+      ? [`${cleanFolder}/${file}`, `./${cleanFolder}/${file}`]
+      : [`${cleanFolder}/${file}`, `./${cleanFolder}/${file}`, `/${cleanFolder}/${file}`];
+    const candidates = paths.map(p => {
+      const url = new URL(p, window.location.href).href;
+      return isFileProto ? url : `${url}?v=${Date.now()}`;
+    });
+    let attempt = 0;
+
+    const tryLoad = () => {
+      if (attempt >= candidates.length) {
+        thumb.classList.add("placeholder");
+        thumb.innerHTML = "";
+        thumb.textContent = `Sube ${cleanFolder}/${file}`;
+        console.warn(`No se pudo cargar mockup: ${cleanFolder}/${file}`, candidates);
+        return;
+      }
+      img.src = candidates[attempt];
+    };
+
+    img.onload = () => {
+      thumb.classList.remove("placeholder");
+      thumb.innerHTML = "";
+      thumb.appendChild(img);
+    };
+    img.onerror = () => {
+      attempt += 1;
+      tryLoad();
+    };
+
+    tryLoad();
+  });
+
+  if (modalMockNote) {
+    modalMockNote.textContent = folder
+      ? `Guarda las imágenes en ${folder}/ con estos nombres: ${files.join(", ")}`
+      : "Añade un data-mock-folder en la tarjeta para indicar dónde subir los mockups.";
+  }
+};
+
 const openModal = (data) => {
   if (!modal) return;
   modalTitle.textContent = data.title || "";
@@ -121,6 +182,10 @@ const openModal = (data) => {
     const li = document.createElement("li");
     li.textContent = item.trim();
     modalFunc.appendChild(li);
+  });
+  buildGallery({
+    folder: data.mockFolder,
+    files: data.mockFiles
   });
   setPage(1);
   modal.classList.add("show");
@@ -154,10 +219,13 @@ document.querySelectorAll(".project-card").forEach(card => {
   card.setAttribute("role", "button");
   const handler = () => {
     const funcs = (card.dataset.func || "").split("|").filter(Boolean);
+    const mockFiles = (card.dataset.mockFiles || "").split("|").filter(Boolean);
     openModal({
       title: card.dataset.title,
       desc: card.dataset.desc,
-      func: funcs
+      func: funcs,
+      mockFolder: card.dataset.mockFolder,
+      mockFiles
     });
   };
   card.addEventListener("click", handler);
