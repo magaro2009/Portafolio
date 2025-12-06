@@ -132,22 +132,26 @@ const buildGallery = (mockData = {}) => {
     img.alt = `Mockup ${idx + 1}`;
     img.loading = "lazy";
 
+    const relPath = `${cleanFolder}/${file}`;
     const isFileProto = window.location.protocol === "file:";
-    const paths = isFileProto
-      ? [`${cleanFolder}/${file}`, `./${cleanFolder}/${file}`]
-      : [`${cleanFolder}/${file}`, `./${cleanFolder}/${file}`, `/${cleanFolder}/${file}`];
-    const candidates = paths.map(p => {
-      const url = new URL(p, window.location.href).href;
-      return isFileProto ? url : `${url}?v=${Date.now()}`;
-    });
+    const candidates = isFileProto
+      ? [
+          new URL(relPath, window.location.href).href,
+          new URL(`./${relPath}`, window.location.href).href
+        ]
+      : [
+          new URL(relPath, window.location.href).href,
+          new URL(relPath, window.location.origin + window.location.pathname).href,
+          new URL(relPath, window.location.origin + "/").href
+        ];
     let attempt = 0;
 
     const tryLoad = () => {
       if (attempt >= candidates.length) {
         thumb.classList.add("placeholder");
         thumb.innerHTML = "";
-        thumb.textContent = `Sube ${cleanFolder}/${file}`;
-        console.warn(`No se pudo cargar mockup: ${cleanFolder}/${file}`, candidates);
+        thumb.textContent = `Sube ${relPath}`;
+        console.warn(`No se pudo cargar mockup: ${relPath}`, candidates);
         return;
       }
       img.src = candidates[attempt];
