@@ -350,6 +350,37 @@ section::before {
 }
 .card:hover::after { opacity: 1; }
 .card h3 { font-size: 19px; margin-bottom: 6px; }
+.project-card { cursor: pointer; }
+.project-card:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 4px;
+  transform: translateY(-2px);
+  box-shadow: 0 14px 24px rgba(0, 0, 0, 0.32), 0 0 0 6px rgba(119, 247, 216, 0.12);
+}
+.click-hint {
+  margin-top: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(119, 247, 216, 0.35);
+  background: rgba(119, 247, 216, 0.08);
+  color: var(--text);
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.02em;
+}
+.click-hint span {
+  display: inline-block;
+  width: 12px;
+  text-align: center;
+  transition: transform 160ms ease;
+}
+.project-card:hover .click-hint span,
+.project-card:focus-visible .click-hint span {
+  transform: translateX(3px);
+}
 .tag-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
 .tag {
   padding: 6px 10px;
