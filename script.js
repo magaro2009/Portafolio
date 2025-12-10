@@ -167,16 +167,25 @@ const buildGallery = (mockData = {}) => {
       <span class="mock-open">Abrir</span>
     `;
     modalGallery.appendChild(card);
+    const holder = card.querySelector(".mock-img");
+    const setThumb = () => {
+      if (holder) holder.style.backgroundImage = relPath ? `url(${relPath})` : "";
+    };
+    // Set immediately so el fondo se pinta aunque el onload no dispare
+    setThumb();
     card.addEventListener("click", () => openLightbox(relPath, `Mockup ${idx + 1}`));
 
-    if (!cleanFolder) return;
     const img = new Image();
     img.alt = `Mockup ${idx + 1}`;
     img.loading = "lazy";
+    img.decoding = "async";
     img.onload = () => {
-      const holder = card.querySelector(".mock-img");
-      if (holder) holder.style.backgroundImage = `url(${relPath})`;
+      setThumb();
       card.classList.add("mock-link--with-img");
+    };
+    img.onerror = () => {
+      if (holder) holder.style.backgroundImage = "";
+      card.classList.remove("mock-link--with-img");
     };
     img.src = relPath;
   });
