@@ -1,14 +1,19 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portafolio | Crea tu sello digital</title>
+  <title>Mauricio Gaitán | Herramientas Web & Automatización Empresarial</title>
+  <meta name="description" content="Especialista en desarrollo de plataformas web empresariales, Inteligencia de Negocios (BI) y automatización de procesos para escalar tu negocio.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@600;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@600;700&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
   <div class="page">
     <header>
@@ -44,33 +49,38 @@
       <div class="hero-grid">
         <div>
           <div class="badge"><i></i> Disponible para nuevos retos</div>
-          <h1>Hola, soy <span>Mauricio</span>. Diseño y desarrollo experiencias digitales con carácter futurista.</h1>
-          <p class="lead">Conecto estrategia, visual y código para lanzar productos que se sientan modernas, rápidas y memorables.</p>
+          <h1>Construyo <span>herramientas empresariales</span> que optimizan y escalan procesos.</h1>
+          <p class="lead">Especialista en desarrollo web, automatización de flujos de trabajo (Make.com) y sistemas
+            de Inteligencia de Negocios (BI). Transformo operaciones complejas en plataformas ágiles y decisivas.</p>
           <div class="actions">
-            <button class="cta" onclick="document.getElementById('proyectos').scrollIntoView({behavior:'smooth'})">Ver proyectos</button>
+            <button class="cta" onclick="document.getElementById('proyectos').scrollIntoView({behavior:'smooth'})">Ver
+              proyectos</button>
+            <button class="ghost" onclick="document.getElementById('metrics').scrollIntoView({behavior:'smooth'})">Ver
+              impacto</button>
           </div>
         </div>
         <div class="hero-side">
           <div class="hero-card">
             <div class="chip-row">
-              <div class="chip">UI/UX</div>
-              <div class="chip">Frontend</div>
+              <div class="chip">SaaS & Apps</div>
+              <div class="chip">Automatización</div>
               <div class="chip">Backend</div>
-              <div class="chip">Prototipos</div>
+              <div class="chip">Data / BI</div>
             </div>
-            <p style="margin-top:10px;">Combino diseño, motion y desarrollo para convertir ideas en productos digitales que solucionen de verdad. Trabajo remoto y presencial.</p>
+            <p style="margin-top:10px;">Desarrollo arquitecturas escalables y dashboards analíticos para empresas que
+              buscan reducir fricción operativa y tomar decisiones basadas en datos.</p>
             <div class="stat-grid">
               <div class="stat">
-                <h3>4+</h3>
-                <span>Proyectos lanzados</span>
+                <h3>+40%</h3>
+                <span>Eficiencia operativa</span>
               </div>
               <div class="stat">
-                <h3>5+</h3>
-                <span>Procesos optimizados</span>
+                <h3>+5</h3>
+                <span>Sistemas core lanzados</span>
               </div>
               <div class="stat">
-                <h3>4.9★</h3>
-                <span>Feedback promedio</span>
+                <h3>100%</h3>
+                <span>Enfoque a resultados</span>
               </div>
             </div>
           </div>
@@ -87,9 +97,44 @@
         <div class="pill"><i></i><span>Ready to ship</span></div>
       </div>
       <div class="grid projects">
-        <div class="card reveal project-card" data-title="Elite Logística AR" data-desc="Solución para arrancar rutas y entregas en minutos: PHP 8.2 + MySQL dockerizado con roles y pantallas operativas listas." data-func="Stack PHP 8.2 + MySQL dockerizado|Seeds iniciales para rutas y entregas|Roles y pantallas listas para admins y operadores|Estructura app/config/sql lista para extender" data-mock-folder="mockups/elite-logistica-ar" data-mock-files="elite-01.png|elite-02.png|elite-03.png|elite-04.png">
+        <div class="card reveal project-card" data-title="Crepes & Waffles · Menú Digital & Admin"
+          data-desc="Sistema profesional de gestión de menús: interfaz bilingüe con filtros, subida de imágenes a la nube y panel administrativo seguro operado con Firebase y Cloudinary."
+          data-func="Menú público bilingüe (EN/ES) con diseño responsivo, modales de producto y acceso QR|Panel Admin protegido vía Firebase Auth (Magic Link, sin contraseña)|Gestión completa del menú y categorías (CRUD) en Firestore con sincronización en tiempo real|Manejo de imágenes y carga de archivos nativa integrado con Cloudinary API|Detección de estado Offline, notificaciones de sistema (Toast) y caducidad de sesión"
+          data-mock-folder="mockups/crepes-waffles"
+          data-mock-files="cw-01.jpg|cw-02.jpg|cw-03.jpg|cw-04.jpg|cw-05.jpg|cw-06.jpg">
+          <h3>Crepes & Waffles · Menú Digital</h3>
+          <p>Plataforma integral de restaurante: menú bilingüe público interactivo y panel de administración en tiempo
+            real con subida de imágenes.</p>
+          <div class="tag-row">
+            <div class="tag">REACT 18</div>
+            <div class="tag">FIREBASE AUTH</div>
+            <div class="tag">CLOUDINARY</div>
+          </div>
+          <div class="click-hint">Clic para detalles <span>&gt;</span></div>
+        </div>
+        <div class="card reveal project-card" data-title="Valenita Beauty · Admin Panel"
+          data-desc="Panel administrativo integral: centraliza stock, promociones y métricas clave de la tienda en una interfaz moderna y fluida."
+          data-func="Dashboard de ventas en tiempo real con Chart.js / Recharts|Gestión de productos y stock sin fricción|Modificación dinámica de contenidos web y banners|Manejo de estado global avanzado con Context/Redux"
+          data-mock-folder="mockups/valenita-beauty"
+          data-mock-files="vb-01.jpg|vb-02.jpg|vb-03.jpg|vb-04.jpg|vb-05.jpg">
+          <h3>Valenita Beauty · Admin Panel</h3>
+          <p>Plataforma para tienda de maquillaje: gestión de inventario, edición dinámica de la web y dashboard de
+            métricas operando en React.</p>
+          <div class="tag-row">
+            <div class="tag">REACT / VITE</div>
+            <div class="tag">TAILWIND CSS</div>
+            <div class="tag">CHART.JS</div>
+          </div>
+          <div class="click-hint">Clic para detalles <span>&gt;</span></div>
+        </div>
+        <div class="card reveal project-card" data-title="Elite Logística AR"
+          data-desc="Solución para arrancar rutas y entregas en minutos: PHP 8.2 + MySQL dockerizado con roles y pantallas operativas listas."
+          data-func="Stack PHP 8.2 + MySQL dockerizado|Seeds iniciales para rutas y entregas|Roles y pantallas listas para admins y operadores|Estructura app/config/sql lista para extender"
+          data-mock-folder="mockups/elite-logistica-ar"
+          data-mock-files="elite-01.png|elite-02.png|elite-03.png|elite-04.png">
           <h3>Elite Logística AR</h3>
-          <p>Starter que resuelve arranque logístico: rutas y entregas en PHP 8.2 + MySQL sobre Docker, operando en minutos.</p>
+          <p>Starter que resuelve arranque logístico: rutas y entregas en PHP 8.2 + MySQL sobre Docker, operando en
+            minutos.</p>
           <div class="tag-row">
             <div class="tag">LOGÍSTICA</div>
             <div class="tag">MYSQL</div>
@@ -97,9 +142,14 @@
           </div>
           <div class="click-hint">Clic para detalles <span>&gt;</span></div>
         </div>
-        <div class="card reveal project-card" data-title="Gestión de Solicitudes Técnicas" data-desc="Mesa técnica lista: roles, estados con comentarios/adjuntos y seguimiento por SLA en una sola aplicación web." data-func="Roles solicitante/admin/técnico/coordinador/gerencial|Estados con comentarios y adjuntos|Tablero de asignación y seguimiento por SLA|Historial y reportería para auditoría" data-mock-folder="mockups/gestion-solicitudes-tecnicas" data-mock-files="gst-01.png|gst-02.png|gst-03.png|gst-04.png">
+        <div class="card reveal project-card" data-title="Gestión de Solicitudes Técnicas"
+          data-desc="Mesa técnica lista: roles, estados con comentarios/adjuntos y seguimiento por SLA en una sola aplicación web."
+          data-func="Roles solicitante/admin/técnico/coordinador/gerencial|Estados con comentarios y adjuntos|Tablero de asignación y seguimiento por SLA|Historial y reportería para auditoría"
+          data-mock-folder="mockups/gestion-solicitudes-tecnicas"
+          data-mock-files="gst-01.png|gst-02.png|gst-03.png|gst-04.png">
           <h3>Gestión de Solicitudes Técnicas</h3>
-          <p>Solución helpdesk para solicitudes técnicas: roles completos, estados con comentarios/adjuntos y control de SLA sin fricción.</p>
+          <p>Solución helpdesk para solicitudes técnicas: roles completos, estados con comentarios/adjuntos y control de
+            SLA sin fricción.</p>
           <div class="tag-row">
             <div class="tag">PHP 8.5</div>
             <div class="tag">MYSQL</div>
@@ -107,9 +157,14 @@
           </div>
           <div class="click-hint">Clic para detalles <span>&gt;</span></div>
         </div>
-        <div class="card reveal project-card" data-title="Colegio Antonio Nariño · Portal Web" data-desc="Portal escolar listo: páginas públicas desde BD, panel visual editable y reportes académicos en PDF, desplegable en Docker." data-func="Páginas públicas alimentadas desde BD|Panel visual editable por usuarios no técnicos|Reportes académicos en PDF y roles con control de acceso|Estructura app/views/config/sql/docs lista para escalar" data-mock-folder="mockups/colegio-antonio-narino" data-mock-files="can-01.png|can-02.png|can-03.png|can-04.png">
+        <div class="card reveal project-card" data-title="Colegio Antonio Nariño · Portal Web"
+          data-desc="Portal escolar listo: páginas públicas desde BD, panel visual editable y reportes académicos en PDF, desplegable en Docker."
+          data-func="Páginas públicas alimentadas desde BD|Panel visual editable por usuarios no técnicos|Reportes académicos en PDF y roles con control de acceso|Estructura app/views/config/sql/docs lista para escalar"
+          data-mock-folder="mockups/colegio-antonio-narino"
+          data-mock-files="can-01.png|can-02.png|can-03.png|can-04.png">
           <h3>Colegio Antonio Nariño · Portal Web</h3>
-          <p>Portal escolar llave en mano: contenido desde BD, panel visual editable y reportes en PDF, listo para desplegar en Docker.</p>
+          <p>Portal escolar llave en mano: contenido desde BD, panel visual editable y reportes en PDF, listo para
+            desplegar en Docker.</p>
           <div class="tag-row">
             <div class="tag">ROLE BASED ACCESS</div>
             <div class="tag">CMS LIGERO</div>
@@ -117,9 +172,14 @@
           </div>
           <div class="click-hint">Clic para detalles <span>&gt;</span></div>
         </div>
-        <div class="card reveal project-card" data-title="Plataforma SaaS de gestión de servicios" data-desc="Base SaaS multi-tenant: panel del gestor con planes/licencias, panel del cliente con catálogos y formularios, y flujos operativos con métricas." data-func="Panel del gestor de plataforma (planes, clientes, licencias)|Panel del cliente para categorías, servicios y formularios|Flujos operativos para gestor/coordinador/gerencial con métricas|Portal de usuarios finales con formularios dinámicos, adjuntos y transiciones configurables" data-mock-folder="mockups/plataforma-saas-servicios" data-mock-files="saas-01.png|saas-02.png|saas-03.png|saas-04.png|saas-05.png">
+        <div class="card reveal project-card" data-title="Plataforma SaaS de gestión de servicios"
+          data-desc="Base SaaS multi-tenant: panel del gestor con planes/licencias, panel del cliente con catálogos y formularios, y flujos operativos con métricas."
+          data-func="Panel del gestor de plataforma (planes, clientes, licencias)|Panel del cliente para categorías, servicios y formularios|Flujos operativos para gestor/coordinador/gerencial con métricas|Portal de usuarios finales con formularios dinámicos, adjuntos y transiciones configurables"
+          data-mock-folder="mockups/plataforma-saas-servicios"
+          data-mock-files="saas-01.png|saas-02.png|saas-03.png|saas-04.png|saas-05.png">
           <h3>Plataforma SaaS de gestión de servicios</h3>
-          <p>Core SaaS para gestión de servicios: multi-tenant con licencias, catálogos y formularios por cliente, flujos operativos y portal final listo para Docker.</p>
+          <p>Core SaaS para gestión de servicios: multi-tenant con licencias, catálogos y formularios por cliente,
+            flujos operativos y portal final listo para Docker.</p>
           <div class="tag-row">
             <div class="tag">PHP 8.2</div>
             <div class="tag">WORKFLOW</div>
@@ -140,34 +200,104 @@
       </div>
       <div class="grid skills">
         <div class="card">
-          <h3>Conocimientos en</h3>
+          <h3>Arquitectura & Backend</h3>
           <div class="skill-list">
-            <div class="skill">Api's</div>
-            <div class="skill">React</div>
-            <div class="skill">PHP</div>
-            <div class="skill">CSS modular</div>
-            <div class="skill">Laravel</div>
-            <div class="skill">Prototipado</div>
-          </div>
-        </div>
-        <div class="card">
-          <h3>Complementos</h3>
-          <div class="skill-list">
+            <div class="skill">PHP / Laravel</div>
             <div class="skill">Docker</div>
-            <div class="skill">Matrices AS-IS</div>
-            <div class="skill">BI</div>
-            <div class="skill">Six Sigma/Lean</div>
-            <div class="skill">Web services</div>
-            <div class="skill">Git-Github</div>
+            <div class="skill">Servidores Linux</div>
+            <div class="skill">MySQL</div>
+            <div class="skill">APIs REST</div>
+            <div class="skill">Git/GitHub</div>
           </div>
         </div>
         <div class="card">
-          <h3>Workflow</h3>
-          <p style="margin-top:8px;">Metodologías Spring, prototipado, alcances definidos, validación y entrega. Comunicación transparente.</p>
+          <h3>Datos & Automatización</h3>
+          <div class="skill-list">
+            <div class="skill">Make.com</div>
+            <div class="skill">Workflow Auto</div>
+            <div class="skill">BI Dashboards</div>
+            <div class="skill">Data Analysis</div>
+            <div class="skill">Matrices AS-IS</div>
+            <div class="skill">Six Sigma/Lean</div>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Frontend & UI</h3>
+          <p style="margin-top:8px;">Creación de interfaces limpias, accesibles y orientadas a la experiencia del
+            usuario (UX) corporativo.</p>
           <div class="tag-row">
-            <div class="tag">Entrega continua</div>
-            <div class="tag">Sistemas escalables</div>
-            <div class="tag">Remote-first</div>
+            <div class="tag">React</div>
+            <div class="tag">CSS Modular / Tailwind</div>
+            <div class="tag">Prototipado</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="metrics" class="metrics-section">
+      <div class="section-heading">
+        <div>
+          <h2>Impacto y Business Intelligence (BI)</h2>
+          <p>Construyo sistemas que no solo operan, sino que miden, predicen y demuestran resultados tangibles mediante
+            análisis de datos.</p>
+        </div>
+        <div class="pill"><i></i><span>Data Driven</span></div>
+      </div>
+
+      <div class="bi-dashboard map-bg">
+        <div class="bi-grid">
+          <div class="bi-card highlight">
+            <div class="bi-header">
+              <span class="bi-icon">⏱️</span>
+              <p>Reducción de tiempos manuales</p>
+            </div>
+            <div class="bi-data">
+              <span class="bi-value">-65%</span>
+              <span class="bi-trend positive">↑ Optimizado vs AS-IS</span>
+            </div>
+            <div class="bi-chart-mini">
+              <div class="bar" style="height: 100%; opacity: 0.3;"></div>
+              <div class="bar" style="height: 80%; opacity: 0.4;"></div>
+              <div class="bar" style="height: 50%; opacity: 0.5;"></div>
+              <div class="bar" style="height: 35%; background: var(--primary);"></div>
+            </div>
+          </div>
+
+          <div class="bi-card">
+            <div class="bi-header">
+              <span class="bi-icon">🔄</span>
+              <p>Flujos Automatizados</p>
+            </div>
+            <div class="bi-data">
+              <span class="bi-value">12k+</span>
+              <span class="bi-subtitle">Ejecuciones/mes en Make.com</span>
+            </div>
+          </div>
+
+          <div class="bi-card">
+            <div class="bi-header">
+              <span class="bi-icon">📊</span>
+              <p>Reportes BI</p>
+            </div>
+            <div class="bi-data">
+              <span class="bi-value">15+</span>
+              <span class="bi-subtitle">Dashboards gerenciales</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="bi-feature">
+          <div class="bi-feature-text">
+            <h3>Arquitectura Orientada a Datos</h3>
+            <p>Diseño flujos ETL (Extract, Transform, Load) y los conecto con motores de visualización. Extraigo valor
+              real de bases de datos complejas para que tú solo tengas que leer las conclusiones.</p>
+          </div>
+          <div class="workflow-diagram">
+            <div class="node">Datos</div>
+            <div class="arrow">→</div>
+            <div class="node accent">Make.com</div>
+            <div class="arrow">→</div>
+            <div class="node primary">BI Dashboard</div>
           </div>
         </div>
       </div>
@@ -183,19 +313,19 @@
       </div>
       <div class="timeline">
         <div class="card timeline-card reveal">
-          <h3>Coordinador de Proyectos de Seguridad Electrónica · REDISEG SAS</h3>
-          <small>2014 — 2018</small>
-          <p>Lideré técnicos en Bogotá y regionales, coordinando proyectos especiales de seguridad electrónica, desde el levantamiento de necesidades hasta la implementación de soluciones de control de acceso, alarmas, CCTV y monitoreo.</p>
-        </div>
-        <div class="card timeline-card reveal">
-          <h3>Ingeniero Automatización, Appsheet · G4S</h3>
-          <small>2024 — Presente</small>
-          <p>Lideré la capa de UI en proyectos fintech con énfasis en rendimiento y accesibilidad.</p>
-        </div>
-        <div class="card timeline-card reveal">
-          <h3>Desarrollador de Aplicaciones · Freelance</h3>
+          <h3>Arquitecto de Herramientas Web Empresariales · Freelance</h3>
           <small>2021 — Presente</small>
-          <p>Diseño y desarrollo plataformas web para gestión estudiantil, logística de mensajería y seguimiento de solicitudes empresariales, aplicando buenas prácticas de desarrollo y bases de datos relacionales.</p>
+          <p>He diseñado y escalado plataformas web a medida para logística, gestión técnica y educación. Mi enfoque
+            está en la optimización de procesos mediante automatización robusta (Make.com, APIs personalizadas), diseño
+            de arquitecturas en la nube (Docker, Linux) y la reducción dramática de tiempos operativos reemplazando
+            sistemas obsoletos por soluciones ágiles y medibles con herramientas analíticas (BI).</p>
+        </div>
+        <div class="card timeline-card reveal">
+          <h3>Ingeniero de Automatización & BI · G4S</h3>
+          <small>2024 — Presente</small>
+          <p>Lidero la transformación digital abordando cuellos de botella mediante plataformas centralizadas.
+            Desarrollo la capa UI y lógica de sistemas orientados a rendimiento, generando métricas gerenciales
+            (Business Intelligence) para una toma de decisiones 3x más rápida en proyectos críticos.</p>
         </div>
       </div>
     </section>
@@ -215,14 +345,16 @@
           <div class="actions" style="margin-top:16px; flex-direction:column; align-items:flex-start; gap:12px;">
             <a class="cta" href="mailto:mauriciogaitan91@gmail.com">mauriciogaitan91@gmail.com</a>
             <div class="qr-block" aria-label="Telegram via QR" style="display:flex; align-items:center;">
-              <img src="T.png" alt="QR para contactarme en Telegram" style="width:120px; height:120px; border-radius:12px; box-shadow:0 10px 30px rgba(0,0,0,0.25); object-fit:cover;">
+              <img src="T.png" alt="QR para contactarme en Telegram"
+                style="width:120px; height:120px; border-radius:12px; box-shadow:0 10px 30px rgba(0,0,0,0.25); object-fit:cover;">
             </div>
           </div>
         </div>
         <div class="card">
           <h3>Atajos</h3>
           <div class="social-row">
-            <a class="tag" href="https://www.linkedin.com/in/mauricio-gaitan-rodirguez-34a607265/" target="_blank" rel="noreferrer">LinkedIn</a>
+            <a class="tag" href="https://www.linkedin.com/in/mauricio-gaitan-rodirguez-34a607265/" target="_blank"
+              rel="noreferrer">LinkedIn</a>
             <a class="tag" href="https://www.behance.net/mauriciogaitan91" target="_blank" rel="noreferrer">Behance</a>
             <a class="tag" href="https://github.com/magaro2009" target="_blank" rel="noreferrer">GitHub</a>
           </div>
@@ -278,4 +410,5 @@
 
   <script src="script.js"></script>
 </body>
+
 </html>
