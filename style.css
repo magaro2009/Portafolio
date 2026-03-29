@@ -1,15 +1,15 @@
 :root {
   --bg: #004b98; /* Azul base intermedio */
-  --card: rgba(10, 20, 40, 0.45); /* Vidrio esmerilado oscuro y elegante */
-  --stroke: rgba(255, 255, 255, 0.12); /* Borde sutil */
-  --primary: #3399ff; /* Azul celeste brillante para contraste */
+  --card: rgba(10, 20, 40, 0.18); /* Tarjetas mega traslúcidas */
+  --stroke: rgba(255, 255, 255, 0.1); /* Borde sutil */
+  --primary: #5cb8ff; /* Azul brillante, ideal para legibilidad con fondos oscuros */
   --secondary: #66b2ff; 
   --accent: #ff453a;
   --text: #ffffff;
-  --muted: #b3d4ff; /* Texto mudo en tono azulado claro */
+  --muted: #cce6ff; /* Texto silenciado mucho más blanco/claro */
   --shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
-  --glow: 0 4px 20px rgba(51, 153, 255, 0.4);
-  --glass: rgba(10, 20, 40, 0.2); /* Header mucho más traslúcido */
+  --glow: 0 4px 20px rgba(92, 184, 255, 0.4);
+  --glass: rgba(10, 20, 40, 0.12); /* Header y modales hiper-traslúcidos */
 }
 
 * { box-sizing: border-box; }
@@ -38,6 +38,15 @@ body {
 a { color: inherit; text-decoration: none; }
 h1, h2, h3 { margin: 0; font-weight: 600; letter-spacing: -0.015em; }
 p { margin: 0; color: var(--muted); line-height: 1.5; font-size: 16px; }
+
+/* Tipografía Responsiva Dinámica */
+h1 { font-size: clamp(34px, 6vw, 54px); }
+h1 span { 
+  color: var(--primary); 
+  text-shadow: 0 0 14px rgba(92, 184, 255, 0.5); /* Resplandor para destacar sin perder legibilidad */
+}
+h2 { font-size: clamp(20px, 4vw, 24px); }
+.lead { font-size: clamp(16px, 2.5vw, 19px); line-height: 1.6; }
 
 .page {
   width: min(1000px, 92vw);
