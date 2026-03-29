@@ -23,15 +23,16 @@ const navLinks = Array.from(document.querySelectorAll("nav a")).reduce((acc, lin
 
 const spy = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
-    const id = entry.target.id;
-    const link = navLinks[id];
-    if (!link) return;
     if (entry.isIntersecting) {
-      Object.values(navLinks).forEach(l => l.classList.remove("active"));
-      link.classList.add("active");
+      const id = entry.target.id;
+      const link = navLinks[id];
+      if (link) {
+        Object.values(navLinks).forEach(l => l.classList.remove("active"));
+        link.classList.add("active");
+      }
     }
   });
-}, { threshold: 0.45, rootMargin: "-10% 0px -40% 0px" });
+}, { threshold: 0.1, rootMargin: "-20% 0px -30% 0px" });
 
 sections.forEach(sec => spy.observe(sec));
 
@@ -264,4 +265,143 @@ document.querySelectorAll(".project-card").forEach(card => {
 function toggleMenu() {
   const menu = document.getElementById("mobile-nav");
   menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+}
+
+// Contact Modal y Formulario
+const btnOpenContact = document.getElementById("btn-open-contact");
+const contactModal = document.getElementById("contact-modal");
+const contactModalClose = document.getElementById("contact-modal-close");
+const contactForm = document.getElementById("telegram-contact-form");
+const cDesc = document.getElementById("c-desc");
+const cCounter = document.getElementById("c-counter");
+const cSubmit = document.getElementById("c-submit");
+
+const openContactModal = () => {
+  if (!contactModal) return;
+  contactModal.classList.add("show");
+  contactModal.setAttribute("aria-hidden", "false");
+};
+
+const closeContactModal = () => {
+  if (!contactModal) return;
+  contactModal.classList.remove("show");
+  contactModal.setAttribute("aria-hidden", "true");
+};
+
+if (btnOpenContact) btnOpenContact.addEventListener("click", openContactModal);
+if (contactModalClose) contactModalClose.addEventListener("click", closeContactModal);
+if (contactModal) {
+  contactModal.addEventListener("click", (e) => {
+    if (e.target === contactModal) closeContactModal();
+  });
+}
+window.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") closeContactModal();
+});
+
+if (cDesc && cCounter) {
+  cDesc.addEventListener("input", (e) => {
+    const len = e.target.value.length;
+    cCounter.textContent = `${len}/300`;
+    if (len >= 300) {
+      cCounter.classList.add("limit");
+    } else {
+      cCounter.classList.remove("limit");
+    }
+  });
+}
+
+const TELEGRAM_TOKEN = "8609146383:AAGWuN7PB--EDOP0tvM86IR5QgOKM8I2ylY";
+const CHAT_ID = "1529473871";
+
+if (contactForm) {
+  contactForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    
+    // 1. Validación de Honeypot Anti-Bots
+    const honeypot = document.getElementById("c-bot-check");
+    if (honeypot && honeypot.value !== "") {
+      cSubmit.textContent = "Error de validación";
+      return; // Silenciosamente bloquea a los bots
+    }
+
+    // 2. Límite de envíos (Rate Limiting en LocalStorage)
+    const lastSent = localStorage.getItem("lastContactSent");
+    if (lastSent) {
+      const diffMins = (new Date().getTime() - parseInt(lastSent, 10)) / 60000;
+      if (diffMins < 10) { // Bloqueo temporal por 10 minutos
+        const cSubmitText = document.getElementById("c-submit-text");
+        if (cSubmitText) cSubmitText.textContent = `Espera ${Math.ceil(10 - diffMins)} minutos`;
+        cSubmit.style.background = "var(--accent)";
+        setTimeout(() => {
+          if (cSubmitText) cSubmitText.textContent = "Enviar mensaje";
+          cSubmit.style.background = "";
+        }, 4000);
+        return;
+      }
+    }
+
+    const name = document.getElementById("c-name").value.trim();
+    const phone = document.getElementById("c-phone").value.trim();
+    const email = document.getElementById("c-email").value.trim();
+    const desc = document.getElementById("c-desc").value.trim();
+
+    const textMessage = `
+📬 <b>Nuevo Contacto desde el Portafolio</b>
+👤 <b>Nombre:</b> ${name}
+📞 <b>Teléfono:</b> ${phone}
+📧 <b>Correo:</b> ${email}
+
+📝 <b>Proyecto:</b>
+${desc}
+    `;
+
+    cSubmit.disabled = true;
+    const cSubmitText = document.getElementById("c-submit-text");
+    const ogText = cSubmitText ? cSubmitText.textContent : "Enviar mensaje";
+    if (cSubmitText) cSubmitText.textContent = "Enviando...";
+
+    try {
+      const response = await fetch(`https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          chat_id: CHAT_ID,
+          text: textMessage.trim(),
+          parse_mode: "HTML"
+        })
+      });
+
+      if (response.ok) {
+        localStorage.setItem("lastContactSent", new Date().getTime().toString());
+        if (cSubmitText) cSubmitText.textContent = "¡Mensaje Enviado!";
+        cSubmit.style.background = "#32d74b";
+        cSubmit.style.borderColor = "#32d74b";
+        contactForm.reset();
+        if (cCounter) cCounter.textContent = "0/300";
+        setTimeout(() => {
+          closeContactModal();
+          cSubmit.disabled = false;
+          if (cSubmitText) cSubmitText.textContent = ogText;
+          cSubmit.style.background = "";
+          cSubmit.style.borderColor = "";
+        }, 2500);
+      } else {
+        throw new Error("API falló");
+      }
+    } catch (err) {
+      console.error(err);
+      if (cSubmitText) cSubmitText.textContent = "Error al enviar";
+      cSubmit.style.background = "var(--accent)";
+      cSubmit.style.borderColor = "var(--accent)";
+      setTimeout(() => {
+        cSubmit.disabled = false;
+        if (cSubmitText) cSubmitText.textContent = ogText;
+        cSubmit.style.background = "";
+        cSubmit.style.borderColor = "";
+      }, 3000);
+    }
+  });
 }

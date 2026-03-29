@@ -5,12 +5,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mauricio Gaitán | Herramientas Web & Automatización Empresarial</title>
-  <meta name="description" content="Especialista en desarrollo de plataformas web empresariales, Inteligencia de Negocios (BI) y automatización de procesos para escalar tu negocio.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@600;700&display=swap"
-    rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <meta name="description"
+    content="Especialista en desarrollo de plataformas web empresariales, Inteligencia de Negocios (BI) y automatización de procesos para escalar tu negocio.">
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -27,11 +24,7 @@
             <li><a href="#contacto">Contacto</a></li>
           </ul>
         </nav>
-        <div class="cube-wrap header-cube">
-          <button class="code-cube" id="code-cube" type="button" aria-label="Activar giro de código">
-            <span>&lt;/&gt;</span>
-          </button>
-        </div>
+
         <button class="hamburger" aria-label="Abrir menú" onclick="toggleMenu()">Menú</button>
       </div>
       <div class="mobile-nav" id="mobile-nav">
@@ -42,8 +35,7 @@
       </div>
     </header>
 
-    <div class="floating a"></div>
-    <div class="floating b"></div>
+
 
     <section class="hero">
       <div class="hero-grid">
@@ -234,7 +226,8 @@
         </div>
         <div class="card">
           <h3>Automatización & Negocio</h3>
-          <p style="margin-top:8px;">Conecto arquitectura técnica con rentabilidad: desde levantamiento AS-IS hasta flujos que operan solos (Make.com) y Business Intelligence (BI).</p>
+          <p style="margin-top:8px;">Conecto arquitectura técnica con rentabilidad: desde levantamiento AS-IS hasta
+            flujos que operan solos (Make.com) y Business Intelligence (BI).</p>
           <div class="tag-row">
             <div class="tag">Flujos Make.com</div>
             <div class="tag">Dashboards Gerenciales</div>
@@ -350,18 +343,15 @@
       <div class="contact">
         <div>
           <div class="badge"><i></i> Disponible remoto</div>
-          <h3 style="margin:10px 0 8px;">Envía un correo o escribeme</h3>
-          <p>Prefiero sesiones breves para alinear objetivos y plantear un plan con tiempos claros.</p>
-          <div class="actions" style="margin-top:16px; flex-direction:column; align-items:flex-start; gap:12px;">
-            <a class="cta" href="mailto:mauriciogaitan91@gmail.com">mauriciogaitan91@gmail.com</a>
-            <div class="qr-block" aria-label="Telegram via QR" style="display:flex; align-items:center;">
-              <img src="T.png" alt="QR para contactarme en Telegram"
-                style="width:120px; height:120px; border-radius:12px; box-shadow:0 10px 30px rgba(0,0,0,0.25); object-fit:cover;">
-            </div>
+          <h3 style="margin:10px 0 8px;">Iniciemos la conversación</h3>
+          <p>Prefiero sesiones breves para alinear objetivos y plantear un plan con tiempos claros. Escríbeme y
+            agendamos.</p>
+          <div class="actions" style="margin-top:20px; flex-direction:column; align-items:flex-start;">
+            <button class="cta" id="btn-open-contact" type="button">Agendar una charla</button>
           </div>
         </div>
         <div class="card">
-          <h3>Atajos</h3>
+          <h3>Redes</h3>
           <div class="social-row">
             <a class="tag" href="https://www.linkedin.com/in/mauricio-gaitan-rodirguez-34a607265/" target="_blank"
               rel="noreferrer">LinkedIn</a>
@@ -374,10 +364,10 @@
     </section>
 
     <footer>
-      Hecho a mano con buen café. Optimizado para GitHub Pages.
+      &copy; 2026 Mauricio Gaitán Rodríguez. Arquitectura Web Empresarial & Inteligencia de Negocios.
     </footer>
   </div>
-  <div id="cursor-glow"></div>
+
   <button class="to-top" id="to-top" aria-label="Volver al inicio">&uarr;</button>
 
   <div class="image-lightbox" id="image-lightbox" aria-hidden="true">
@@ -414,6 +404,54 @@
           <div class="page-indicator"><span id="page-current">1</span>/3</div>
           <button class="page-btn" id="page-next" aria-label="Página siguiente">→</button>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="contact-modal" aria-hidden="true">
+    <div class="modal contact-form-modal" role="dialog" aria-modal="true" aria-labelledby="contact-modal-title">
+      <button class="modal-close" id="contact-modal-close" aria-label="Cerrar">×</button>
+      <div class="modal-top">
+        <div>
+          <h3 id="contact-modal-title">Cuéntame sobre tu proyecto</h3>
+          <p class="modal-label">Contacto</p>
+        </div>
+      </div>
+      <div class="modal-body">
+        <form id="telegram-contact-form">
+          <!-- Honeypot oculto para atrapar bots autocompletadores -->
+          <div style="display:none;" aria-hidden="true">
+            <label for="c-bot-check">Deja este campo vacío</label>
+            <input type="text" id="c-bot-check" tabindex="-1" autocomplete="off">
+          </div>
+          <div class="form-group">
+            <label for="c-name">Nombre</label>
+            <input type="text" id="c-name" required placeholder="Ej: Juan Pérez">
+          </div>
+          <div class="form-group">
+            <label for="c-phone">Número</label>
+            <input type="tel" id="c-phone" required placeholder="Ej: +57 300 1234567">
+          </div>
+          <div class="form-group">
+            <label for="c-email">Correo</label>
+            <input type="email" id="c-email" required placeholder="correo@empresa.com">
+          </div>
+          <div class="form-group">
+            <label for="c-desc" style="display:flex; justify-content:space-between;">
+              Descripción breve
+              <span class="char-counter" id="c-counter">0/300</span>
+            </label>
+            <textarea id="c-desc" required maxlength="300" rows="3" placeholder="¿En qué te puedo ayudar?"></textarea>
+          </div>
+          <button type="submit" class="cta form-submit-btn submit-enhanced" id="c-submit">
+            <span id="c-submit-text">Enviar</span>
+            <svg class="send-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="22" y1="2" x2="11" y2="13"></line>
+              <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+            </svg>
+          </button>
+        </form>
       </div>
     </div>
   </div>
