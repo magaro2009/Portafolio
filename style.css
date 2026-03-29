@@ -745,6 +745,8 @@ footer {
   padding: 16px 20px;
   border-radius: 16px;
   border: 1px solid var(--stroke);
+  overflow-x: auto; /* Permite scroll horizontal en móviles */
+  white-space: nowrap; /* Evita que los botones colapsen hacia abajo */
 }
 .workflow-diagram .node {
   padding: 8px 16px;
