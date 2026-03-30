@@ -9,6 +9,41 @@
   <meta name="description"
     content="Especialista en desarrollo de plataformas web empresariales, Inteligencia de Negocios (BI) y automatización de procesos para escalar tu negocio.">
   <link rel="stylesheet" href="style.css">
+  <style>
+    button {
+      background: linear-gradient(45deg, #0ff, #00f);
+      color: white;
+      font-weight: bold;
+      border: none;
+      padding: 15px 20px;
+      text-align: center;
+      text-decoration: none;
+      font-size: 16px;
+      margin: 10px 5px;
+      cursor: pointer;
+      border-radius: 8px;
+      box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
+      /* Sombra para el efecto 3D */
+      transition: all 0.3s ease;
+      text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #0ff;
+    }
+
+    /* Efecto al pasar el cursor (hover) */
+    button:hover {
+      background: linear-gradient(45deg, #00f, #0ff);
+      box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5), 0 0 20px #0ff;
+      transform: translateY(-2px);
+      /* Ligero levantamiento */
+    }
+
+    /* Efecto al hacer clic */
+    button:active {
+      background: linear-gradient(45deg, #00a, #088);
+      box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.7), 0 0 10px #088;
+      transform: translateY(2px);
+      /* Simular presión */
+    }
+  </style>
 </head>
 
 <body>
@@ -390,7 +425,7 @@
           <p id="modal-desc" class="modal-desc"></p>
         </div>
         <div class="modal-page" data-page="2">
-          <h4 class="modal-subtitle"> Funcionalidades clave</h4>
+          <h4 class="modal-subtitle">Funcionalidades clave</h4>
           <ul id="modal-func" class="modal-list"></ul>
         </div>
         <div class="modal-page" data-page="3">
