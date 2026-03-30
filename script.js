@@ -264,8 +264,14 @@ document.querySelectorAll(".project-card").forEach(card => {
 
 function toggleMenu() {
   const menu = document.getElementById("mobile-nav");
-  menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+  menu.classList.toggle("open");
 }
+
+document.querySelectorAll(".mobile-nav a").forEach(link => {
+  link.addEventListener("click", () => {
+    document.getElementById("mobile-nav").classList.remove("open");
+  });
+});
 
 // Contact Modal y Formulario
 const btnOpenContact = document.getElementById("btn-open-contact");
