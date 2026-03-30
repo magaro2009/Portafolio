@@ -10,38 +10,118 @@
     content="Especialista en desarrollo de plataformas web empresariales, Inteligencia de Negocios (BI) y automatización de procesos para escalar tu negocio.">
   <link rel="stylesheet" href="style.css">
   <style>
+    /* ── Reset base: botón neutro sin herencia de estilos feos ── */
     button {
-      background: linear-gradient(45deg, #0ff, #00f);
-      color: white;
-      font-weight: bold;
-      border: none;
-      padding: 15px 20px;
-      text-align: center;
-      text-decoration: none;
-      font-size: 16px;
-      margin: 10px 5px;
+      font-family: inherit;
       cursor: pointer;
+      border: none;
+      background: none;
+      transition: all 0.2s ease;
+    }
+
+    /* ── Botón primario: acción principal ── */
+    button.cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #2563eb;
+      color: #fff;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      padding: 12px 24px;
       border-radius: 8px;
-      box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
-      /* Sombra para el efecto 3D */
-      transition: all 0.3s ease;
-      text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #0ff;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
     }
 
-    /* Efecto al pasar el cursor (hover) */
-    button:hover {
-      background: linear-gradient(45deg, #00f, #0ff);
-      box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5), 0 0 20px #0ff;
-      transform: translateY(-2px);
-      /* Ligero levantamiento */
+    button.cta:hover {
+      background: #1d4ed8;
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.35);
+      transform: translateY(-1px);
     }
 
-    /* Efecto al hacer clic */
-    button:active {
-      background: linear-gradient(45deg, #00a, #088);
-      box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.7), 0 0 10px #088;
-      transform: translateY(2px);
-      /* Simular presión */
+    button.cta:active {
+      background: #1e40af;
+      transform: translateY(0);
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+    }
+
+    /* ── Botón secundario: estilo contorno sutil ── */
+    button.ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: #cbd5e1;
+      font-size: 0.9rem;
+      font-weight: 500;
+      padding: 11px 22px;
+      border-radius: 8px;
+      border: 1px solid rgba(148, 163, 184, 0.25);
+    }
+
+    button.ghost:hover {
+      background: rgba(148, 163, 184, 0.08);
+      border-color: rgba(148, 163, 184, 0.45);
+      color: #f1f5f9;
+      transform: translateY(-1px);
+    }
+
+    button.ghost:active {
+      background: rgba(148, 163, 184, 0.12);
+      transform: translateY(0);
+    }
+
+    /* ── Botón hamburguesa (móvil) ── */
+    button.hamburger {
+      background: rgba(255, 255, 255, 0.06);
+      color: #cbd5e1;
+      font-size: 0.8rem;
+      font-weight: 500;
+      padding: 7px 14px;
+      border-radius: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      letter-spacing: 0.04em;
+    }
+
+    button.hamburger:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: #f1f5f9;
+    }
+
+    /* ── Botón volver arriba ── */
+    button.to-top {
+      background: rgba(37, 99, 235, 0.15);
+      color: #93c5fd;
+      border: 1px solid rgba(37, 99, 235, 0.3);
+      border-radius: 50%;
+      font-size: 1.1rem;
+    }
+
+    button.to-top:hover {
+      background: rgba(37, 99, 235, 0.28);
+      color: #bfdbfe;
+    }
+
+    /* ── Botones de utilidad: cerrar modal, paginación ── */
+    button.modal-close,
+    button.image-lightbox__close,
+    button.page-btn {
+      background: rgba(255, 255, 255, 0.05);
+      color: #94a3b8;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 6px;
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    button.modal-close:hover,
+    button.image-lightbox__close:hover,
+    button.page-btn:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: #e2e8f0;
+      border-color: rgba(255, 255, 255, 0.16);
     }
   </style>
 </head>
