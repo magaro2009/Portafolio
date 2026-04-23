@@ -1,0 +1,571 @@
+<style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0
+  }
+
+  .db {
+    font-family: var(--font-sans);
+    background: #0f1923;
+    border-radius: 12px;
+    overflow: hidden;
+    padding-bottom: 20px
+  }
+
+  .db-header {
+    background: #0f1923;
+    padding: 12px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, .08)
+  }
+
+  .db-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: #e8e6df
+  }
+
+  .db-sub {
+    font-size: 11px;
+    color: #888780;
+    margin-top: 1px
+  }
+
+  .db-logo-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #378ADD;
+    margin-right: 10px;
+    flex-shrink: 0
+  }
+
+  .filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 12px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, .06);
+    align-items: center
+  }
+
+  .filter-label {
+    font-size: 11px;
+    color: #5F5E5A;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    margin-right: 2px
+  }
+
+  .pill-group {
+    display: flex;
+    gap: 4px
+  }
+
+  .pill {
+    font-size: 11px;
+    color: #888780;
+    background: rgba(255, 255, 255, .05);
+    border: 0.5px solid rgba(255, 255, 255, .1);
+    border-radius: 20px;
+    padding: 4px 11px;
+    cursor: pointer;
+    transition: all .15s
+  }
+
+  .pill:hover {
+    background: rgba(255, 255, 255, .09)
+  }
+
+  .pill.on {
+    background: #185FA5;
+    color: #B5D4F4;
+    border-color: #378ADD
+  }
+
+  .sep {
+    width: 1px;
+    height: 20px;
+    background: rgba(255, 255, 255, .08);
+    margin: 0 4px
+  }
+
+  .gran-group {
+    display: flex;
+    gap: 4px
+  }
+
+  .gran {
+    font-size: 11px;
+    color: #888780;
+    background: rgba(255, 255, 255, .05);
+    border: 0.5px solid rgba(255, 255, 255, .1);
+    border-radius: 6px;
+    padding: 4px 10px;
+    cursor: pointer;
+    transition: all .15s
+  }
+
+  .gran:hover {
+    background: rgba(255, 255, 255, .09)
+  }
+
+  .gran.on {
+    background: rgba(55, 138, 221, .2);
+    color: #85B7EB;
+    border-color: #185FA5
+  }
+
+  .sel {
+    background: #0f1923;
+    color: #b4b2a9;
+    border: 0.5px solid rgba(255, 255, 255, .12);
+    border-radius: 6px;
+    font-size: 11px;
+    padding: 4px 8px;
+    cursor: pointer;
+    outline: none
+  }
+
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    padding: 14px 20px
+  }
+
+  .kpi {
+    background: rgba(255, 255, 255, .04);
+    border: 0.5px solid rgba(255, 255, 255, .08);
+    border-radius: 10px;
+    padding: 12px 14px
+  }
+
+  .kpi-label {
+    font-size: 10px;
+    color: #888780;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    letter-spacing: .05em
+  }
+
+  .kpi-value {
+    font-size: 22px;
+    font-weight: 500;
+    color: #e8e6df;
+    line-height: 1
+  }
+
+  .kpi-delta {
+    font-size: 11px;
+    margin-top: 4px
+  }
+
+  .kpi-up {
+    color: #5DCAA5
+  }
+
+  .kpi-down {
+    color: #F09595
+  }
+
+  .kpi-bar {
+    height: 2px;
+    border-radius: 2px;
+    margin-top: 8px;
+    background: rgba(255, 255, 255, .08)
+  }
+
+  .kpi-bar-fill {
+    height: 2px;
+    border-radius: 2px;
+    transition: width .4s ease
+  }
+
+  .charts-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    padding: 0 20px
+  }
+
+  .chart-card {
+    background: rgba(255, 255, 255, .03);
+    border: 0.5px solid rgba(255, 255, 255, .08);
+    border-radius: 10px;
+    padding: 12px 14px
+  }
+
+  .chart-title {
+    font-size: 11px;
+    font-weight: 500;
+    color: #b4b2a9;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: .04em
+  }
+
+  .charts-row2 {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 10px;
+    padding: 10px 20px 0
+  }
+
+  .mini-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 11px
+  }
+
+  .mini-table th {
+    color: #5F5E5A;
+    font-weight: 500;
+    text-align: left;
+    padding: 3px 0;
+    border-bottom: 0.5px solid rgba(255, 255, 255, .06)
+  }
+
+  .mini-table td {
+    color: #b4b2a9;
+    padding: 5px 0;
+    border-bottom: 0.5px solid rgba(255, 255, 255, .04)
+  }
+
+  .mini-table td:last-child {
+    text-align: right
+  }
+
+  .status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 4px
+  }
+
+  .s-g {
+    background: #1D9E75
+  }
+
+  .s-a {
+    background: #EF9F27
+  }
+
+  .s-r {
+    background: #E24B4A
+  }
+
+  .legend-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 8px
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 10px;
+    color: #888780
+  }
+
+  .legend-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 2px;
+    flex-shrink: 0
+  }
+
+  .chip-active {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 10px;
+    background: rgba(29, 158, 117, .15);
+    color: #5DCAA5;
+    border: 0.5px solid rgba(29, 158, 117, .3);
+    border-radius: 20px;
+    padding: 3px 8px
+  }
+</style>
+
+
+<div class="db">
+  <div class="db-header">
+    <div style="display:flex;align-items:center">
+      <div class="db-logo-dot"></div>
+      <div>
+        <div class="db-title">Centro de operaciones</div>
+        <div class="db-sub" id="db-context">Viendo: Todo el país · Todos los tipos · Vista mensual</div>
+      </div>
+    </div>
+    <div id="active-chips" style="display:flex;gap:5px;flex-wrap:wrap"></div>
+  </div>
+
+  <div class="filter-bar">
+    <span class="filter-label">Período</span>
+    <div class="pill-group">
+      <span class="pill" data-g="period" data-v="T1" onclick="setFilter(this)">T1</span>
+      <span class="pill on" data-g="period" data-v="T2" onclick="setFilter(this)">T2</span>
+      <span class="pill" data-g="period" data-v="T3" onclick="setFilter(this)">T3</span>
+      <span class="pill" data-g="period" data-v="T4" onclick="setFilter(this)">T4</span>
+      <span class="pill" data-g="period" data-v="Anual" onclick="setFilter(this)">Anual</span>
+    </div>
+    <div class="sep"></div>
+    <span class="filter-label">Granularidad</span>
+    <div class="gran-group">
+      <span class="gran" data-g="gran" data-v="Diario" onclick="setFilter(this)">Diario</span>
+      <span class="gran on" data-g="gran" data-v="Mensual" onclick="setFilter(this)">Mensual</span>
+      <span class="gran" data-g="gran" data-v="Trimestral" onclick="setFilter(this)">Trimestral</span>
+    </div>
+    <div class="sep"></div>
+    <span class="filter-label">Ciudad</span>
+    <select class="sel" id="cityFilter" onchange="applyFilters()">
+      <option value="Todas">Todas</option>
+      <option value="Bogotá">Bogotá</option>
+      <option value="Medellín">Medellín</option>
+      <option value="Cali">Cali</option>
+      <option value="Barranquilla">Barranquilla</option>
+      <option value="Bucaramanga">Bucaramanga</option>
+    </select>
+    <div class="sep"></div>
+    <span class="filter-label">Tipo</span>
+    <select class="sel" id="typeFilter" onchange="applyFilters()">
+      <option value="Todos">Todos</option>
+      <option value="Intrusión">Intrusión</option>
+      <option value="CCTV">CCTV</option>
+      <option value="Acceso">Acceso</option>
+      <option value="Incendio">Incendio</option>
+    </select>
+  </div>
+
+  <div class="kpi-grid">
+    <div class="kpi">
+      <div class="kpi-label">Incidentes atendidos</div>
+      <div class="kpi-value" id="k1">1,847</div>
+      <div class="kpi-delta kpi-down" id="k1d">▼ 4.2% vs período ant.</div>
+      <div class="kpi-bar">
+        <div class="kpi-bar-fill" id="k1b" style="width:74%;background:#378ADD"></div>
+      </div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Tiempo respuesta prom.</div>
+      <div class="kpi-value" id="k2">4.3<span style="font-size:13px;color:#888780"> min</span></div>
+      <div class="kpi-delta kpi-up" id="k2d">▲ Mejoró 0.8 min</div>
+      <div class="kpi-bar">
+        <div class="kpi-bar-fill" id="k2b" style="width:88%;background:#1D9E75"></div>
+      </div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Cobertura activa</div>
+      <div class="kpi-value" id="k3">97<span style="font-size:13px;color:#888780">%</span></div>
+      <div class="kpi-delta kpi-up" id="k3d">▲ +1.2% este período</div>
+      <div class="kpi-bar">
+        <div class="kpi-bar-fill" id="k3b" style="width:97%;background:#5DCAA5"></div>
+      </div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Alertas críticas</div>
+      <div class="kpi-value" id="k4">23</div>
+      <div class="kpi-delta kpi-down" id="k4d">▼ +5 vs semana ant.</div>
+      <div class="kpi-bar">
+        <div class="kpi-bar-fill" id="k4b" style="width:23%;background:#E24B4A"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="charts-row">
+    <div class="chart-card">
+      <div class="chart-title" id="trendTitle">Tendencia — mensual</div>
+      <div class="legend-row">
+        <span class="legend-item"><span class="legend-dot" style="background:#378ADD"></span>2025</span>
+        <span class="legend-item"><span class="legend-dot" style="background:#1D9E75"></span>2026</span>
+      </div>
+      <div style="position:relative;height:150px"><canvas id="c1" role="img"
+          aria-label="Tendencia de incidentes por período">Tendencia de incidentes.</canvas></div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-title" id="donutTitle">Tipo de incidente</div>
+      <div style="position:relative;height:150px"><canvas id="c2" role="img"
+          aria-label="Distribución por tipo de incidente">Distribución por tipo.</canvas></div>
+    </div>
+  </div>
+
+  <div class="charts-row2">
+    <div class="chart-card">
+      <div class="chart-title" id="cityTitle">Incidentes por ciudad</div>
+      <div style="position:relative;height:140px"><canvas id="c3" role="img"
+          aria-label="Incidentes por ciudad">Incidentes por ciudad.</canvas></div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-title">Estado zonas</div>
+      <table class="mini-table" id="zonaTable">
+        <tr>
+          <th>Zona</th>
+          <th>Estado</th>
+          <th>Resp.</th>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+  const state = { period: 'T2', gran: 'Mensual', city: 'Todas', type: 'Todos' };
+
+  const DATA = {
+    trend: {
+      Diario: {
+        labels: ['L', 'M', 'X', 'J', 'V', 'S', 'D'],
+        d25: [310, 290, 320, 305, 280, 195, 170],
+        d26: [285, 265, 298, 312, 260, 180, 155]
+      },
+      Mensual: {
+        labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun'],
+        d25: [2100, 1980, 2250, 2050, 1920, 2180],
+        d26: [1950, 1780, 2020, 1847, null, null]
+      },
+      Trimestral: {
+        labels: ['T1 2025', 'T2 2025', 'T3 2025', 'T4 2025', 'T1 2026', 'T2 2026'],
+        d25: [6330, 6150, 6400, 6100, null, null],
+        d26: [null, null, null, null, 5750, 1847]
+      }
+    },
+    kpis: {
+      Todas: { Todos: { inc: 1847, resp: 4.3, cob: 97, crit: 23, incD: '▼ 4.2%', respD: '▲ 0.8 min mejor', cobD: '▲ +1.2%', critD: '▼ +5 esta sem', bInc: 74, bResp: 88 } },
+      Bogotá: {
+        Todos: { inc: 612, resp: 3.8, cob: 98, crit: 9, incD: '▲ 2.1%', respD: '▲ Mejor zona', cobD: '▲ +0.5%', critD: '▼ +2', bInc: 50, bResp: 92 },
+        Intrusión: { inc: 232, resp: 3.5, cob: 98, crit: 4, incD: '▲ 1.4%', respD: '▲ Óptimo', cobD: '▲ +0.5%', critD: '▼ +1', bInc: 38, bResp: 95 },
+        CCTV: { inc: 165, resp: 4.1, cob: 97, crit: 3, incD: '▼ 0.8%', respD: '— Sin cambio', cobD: '▲ +0.3%', critD: '▼ estable', bInc: 27, bResp: 90 }
+      },
+      Medellín: { Todos: { inc: 348, resp: 4.5, cob: 96, crit: 5, incD: '▼ 1.8%', respD: '▼ Aumentó 0.3m', cobD: '— Sin cambio', critD: '▼ +1', bInc: 42, bResp: 85 } },
+      Cali: { Todos: { inc: 274, resp: 5.1, cob: 95, crit: 4, incD: '▼ 3.0%', respD: '▼ Zona crítica', cobD: '▼ -0.8%', critD: '▼ +3', bInc: 35, bResp: 78 } },
+      Barranquilla: { Todos: { inc: 201, resp: 4.8, cob: 96, crit: 2, incD: '▲ 0.5%', respD: '— Estable', cobD: '▲ +0.2%', critD: '▼ estable', bInc: 30, bResp: 82 } },
+      Bucaramanga: { Todos: { inc: 187, resp: 4.2, cob: 97, crit: 2, incD: '▲ 1.1%', respD: '▲ Buena gestión', cobD: '▲ +0.4%', critD: '▼ estable', bInc: 28, bResp: 87 } }
+    },
+    donut: {
+      Todos: [38, 27, 18, 10, 7],
+      Intrusión: [100, 0, 0, 0, 0],
+      CCTV: [0, 100, 0, 0, 0],
+      Acceso: [0, 0, 100, 0, 0],
+      Incendio: [0, 0, 0, 100, 0]
+    },
+    cities: {
+      Todas: [612, 348, 274, 201, 187, 225],
+      Bogotá: [612, 0, 0, 0, 0, 0],
+      Medellín: [0, 348, 0, 0, 0, 0],
+      Cali: [0, 0, 274, 0, 0, 0],
+      Barranquilla: [0, 0, 0, 201, 0, 0],
+      Bucaramanga: [0, 0, 0, 0, 187, 0]
+    },
+    zonas: {
+      Todas: [['Norte', 'Normal', '#1D9E75', 's-g', '3.1m'], ['Sur', 'Normal', '#1D9E75', 's-g', '4.0m'], ['Centro', 'Alerta', '#EF9F27', 's-a', '5.8m'], ['Occidente', 'Crítico', '#F09595', 's-r', '8.2m'], ['Oriente', 'Normal', '#1D9E75', 's-g', '3.6m']],
+      Bogotá: [['Norte', 'Normal', '#1D9E75', 's-g', '2.8m'], ['Sur', 'Normal', '#1D9E75', 's-g', '3.2m'], ['Centro', 'Normal', '#1D9E75', 's-g', '3.8m'], ['Occidente', 'Alerta', '#EF9F27', 's-a', '5.1m'], ['Oriente', 'Normal', '#1D9E75', 's-g', '3.0m']],
+      Medellín: [['Norte', 'Alerta', '#EF9F27', 's-a', '5.2m'], ['Sur', 'Normal', '#1D9E75', 's-g', '4.1m'], ['Centro', 'Crítico', '#F09595', 's-r', '7.9m'], ['Laureles', 'Normal', '#1D9E75', 's-g', '3.9m']],
+      Cali: [['Norte', 'Crítico', '#F09595', 's-r', '9.1m'], ['Sur', 'Alerta', '#EF9F27', 's-a', '6.2m'], ['Centro', 'Alerta', '#EF9F27', 's-a', '6.8m'], ['Oriente', 'Normal', '#1D9E75', 's-g', '4.4m']],
+      Barranquilla: [['Norte', 'Normal', '#1D9E75', 's-g', '4.0m'], ['Sur', 'Normal', '#1D9E75', 's-g', '4.5m'], ['Centro', 'Alerta', '#EF9F27', 's-a', '5.5m']],
+      Bucaramanga: [['Norte', 'Normal', '#1D9E75', 's-g', '3.8m'], ['Sur', 'Normal', '#1D9E75', 's-g', '4.2m'], ['Centro', 'Normal', '#1D9E75', 's-g', '4.0m']]
+    }
+  };
+
+  const grid = { color: 'rgba(255,255,255,.06)' };
+  const tick = { color: '#5F5E5A', font: { size: 10 } };
+  const tooltip = { backgroundColor: '#1a2535', titleColor: '#b4b2a9', bodyColor: '#e8e6df', borderColor: 'rgba(255,255,255,.1)', borderWidth: 1 };
+
+  let c1, c2, c3;
+
+  function initCharts() {
+    c1 = new Chart(document.getElementById('c1'), {
+      type: 'line', data: {
+        labels: [], datasets: [
+          { label: '2025', data: [], borderColor: '#378ADD', backgroundColor: 'rgba(55,138,221,.08)', borderWidth: 1.5, pointRadius: 3, pointBackgroundColor: '#378ADD', tension: .4, fill: true, borderDash: [4, 3] },
+          { label: '2026', data: [], borderColor: '#1D9E75', backgroundColor: 'rgba(29,158,117,.1)', borderWidth: 1.5, pointRadius: 3, pointBackgroundColor: '#1D9E75', tension: .4, fill: true }
+        ]
+      }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false }, tooltip }, scales: { x: { grid, ticks: tick }, y: { grid, ticks: { ...tick, callback: v => v >= 1000 ? (v / 1000).toFixed(1) + 'k' : v }, beginAtZero: false } } }
+    });
+
+    c2 = new Chart(document.getElementById('c2'), { type: 'doughnut', data: { labels: ['Intrusión', 'CCTV', 'Acceso', 'Incendio', 'Otros'], datasets: [{ data: [], backgroundColor: ['#185FA5', '#0F6E56', '#534AB7', '#854F0B', '#444441'], borderWidth: 0, hoverOffset: 4 }] }, options: { responsive: true, maintainAspectRatio: false, cutout: '65%', plugins: { legend: { display: true, position: 'right', labels: { color: '#888780', font: { size: 9 }, boxWidth: 8, padding: 6 } }, tooltip } } });
+
+    c3 = new Chart(document.getElementById('c3'), { type: 'bar', data: { labels: ['Bogotá', 'Medellín', 'Cali', 'Barranquilla', 'Bucaramanga', 'Pereira'], datasets: [{ data: [], backgroundColor: ['#185FA5', '#185FA5', '#0F6E56', '#0F6E56', '#444441', '#444441'], borderRadius: 4, borderSkipped: false }] }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false }, tooltip }, scales: { x: { grid: { display: false }, ticks: { ...tick, maxRotation: 30 } }, y: { grid, ticks: tick } } } });
+    applyFilters();
+  }
+
+  function setFilter(el) {
+    const g = el.dataset.g, v = el.dataset.v;
+    document.querySelectorAll('[data-g="' + g + '"]').forEach(e => e.classList.remove('on'));
+    el.classList.add('on');
+    state[g === 'period' ? 'period' : 'gran'] = v;
+    applyFilters();
+  }
+
+  function applyFilters() {
+    state.city = document.getElementById('cityFilter').value;
+    state.type = document.getElementById('typeFilter').value;
+    updateTrend(); updateKPIs(); updateDonut(); updateCities(); updateZonas(); updateContext();
+  }
+
+  function updateTrend() {
+    const d = DATA.trend[state.gran];
+    c1.data.labels = d.labels;
+    c1.data.datasets[0].data = d.d25;
+    c1.data.datasets[1].data = d.d26;
+    c1.update();
+    document.getElementById('trendTitle').textContent = 'Tendencia — ' + state.gran.toLowerCase();
+  }
+
+  function updateKPIs() {
+    const cityData = DATA.kpis[state.city] || DATA.kpis['Todas'];
+    const d = cityData[state.type] || cityData['Todos'] || DATA.kpis['Todas']['Todos'];
+    document.getElementById('k1').textContent = d.inc.toLocaleString('es-CO');
+    document.getElementById('k2').innerHTML = d.resp.toFixed(1) + '<span style="font-size:13px;color:#888780"> min</span>';
+    document.getElementById('k3').innerHTML = d.cob + '<span style="font-size:13px;color:#888780">%</span>';
+    document.getElementById('k4').textContent = d.crit;
+    const k1d = document.getElementById('k1d');
+    k1d.textContent = d.incD + ' vs período ant.';
+    k1d.className = 'kpi-delta ' + (d.incD.includes('▲') ? 'kpi-up' : 'kpi-down');
+    document.getElementById('k1b').style.width = d.bInc + '%';
+    document.getElementById('k2b').style.width = d.bResp + '%';
+    document.getElementById('k3b').style.width = d.cob + '%';
+    document.getElementById('k4b').style.width = Math.min(d.crit * 4, 100) + '%';
+  }
+
+  function updateDonut() {
+    const t = state.type === 'Todos' ? 'Todos' : state.type;
+    c2.data.datasets[0].data = DATA.donut[t] || DATA.donut['Todos'];
+    c2.update();
+    document.getElementById('donutTitle').textContent = 'Tipo: ' + (state.type === 'Todos' ? 'Todos' : state.type);
+  }
+
+  function updateCities() {
+    c3.data.datasets[0].data = DATA.cities[state.city] || DATA.cities['Todas'];
+    c3.update();
+    document.getElementById('cityTitle').textContent = 'Incidentes — ' + (state.city === 'Todas' ? 'todo el país' : state.city);
+  }
+
+  function updateZonas() {
+    const zonas = DATA.zonas[state.city] || DATA.zonas['Todas'];
+    const t = document.getElementById('zonaTable');
+    t.innerHTML = '<tr><th>Zona</th><th>Estado</th><th>Resp.</th></tr>';
+    zonas.forEach(z => {
+      const tr = document.createElement('tr');
+      tr.innerHTML = '<td><span class="status-dot" style="background:' + z[2] + '"></span>' + z[0] + '</td><td style="color:' + z[2] + '">' + z[1] + '</td><td>' + z[4] + '</td>';
+      t.appendChild(tr);
+    });
+  }
+
+  function updateContext() {
+    document.getElementById('db-context').textContent = 'Viendo: ' + (state.city === 'Todas' ? 'Todo el país' : state.city) + ' · ' + (state.type === 'Todos' ? 'Todos los tipos' : state.type) + ' · Vista ' + state.gran.toLowerCase();
+    const chips = document.getElementById('active-chips');
+    chips.innerHTML = '';
+    if (state.city !== 'Todas') chips.innerHTML += '<span class="chip-active">' + state.city + '</span>';
+    if (state.type !== 'Todos') chips.innerHTML += '<span class="chip-active">' + state.type + '</span>';
+  }
+
+  initCharts();
+</script>

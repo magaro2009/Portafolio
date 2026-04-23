@@ -910,3 +910,154 @@ footer {
 .submit-enhanced:hover::after {
   left: 150%;
 }
+
+/* ── BI PROJECT CARD ── */
+.bi-project-card {
+  border-color: rgba(55, 138, 221, 0.3);
+  background: linear-gradient(135deg, rgba(15, 25, 35, 0.6), rgba(10, 20, 40, 0.3));
+  position: relative;
+  height: auto;
+  min-height: 340px;
+}
+.bi-project-card:hover {
+  border-color: rgba(55, 138, 221, 0.55);
+  box-shadow: 0 24px 48px rgba(0,0,0,0.5), 0 0 0 1px rgba(55,138,221,0.2), 0 0 24px rgba(55,138,221,0.1);
+}
+.bi-project-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(ellipse at top left, rgba(55,138,221,0.08) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+/* "Demo en vivo" badge pill */
+.bi-card-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 4px 12px;
+  background: rgba(29, 158, 117, 0.15);
+  border: 0.5px solid rgba(29, 158, 117, 0.4);
+  border-radius: 99px;
+  color: #5DCAA5;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  width: fit-content;
+}
+.bi-live-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #5DCAA5;
+  box-shadow: 0 0 6px rgba(93, 202, 165, 0.7);
+  animation: bi-pulse 1.8s ease-in-out infinite;
+  flex-shrink: 0;
+}
+@keyframes bi-pulse {
+  0%, 100% { box-shadow: 0 0 4px rgba(93,202,165,0.5); transform: scale(1); }
+  50%       { box-shadow: 0 0 10px rgba(93,202,165,0.9); transform: scale(1.2); }
+}
+
+/* SVG mini-preview container */
+.bi-card-preview {
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid rgba(55,138,221,0.2);
+  margin: 10px 0;
+  flex-shrink: 0;
+  transition: border-color 300ms ease, box-shadow 300ms ease;
+}
+.bi-project-card:hover .bi-card-preview {
+  border-color: rgba(55,138,221,0.45);
+  box-shadow: 0 4px 20px rgba(55,138,221,0.15);
+}
+.bi-card-preview svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* BI tags accent */
+.tag.tag-bi {
+  background: rgba(55, 138, 221, 0.12);
+  border-color: rgba(55, 138, 221, 0.3);
+  color: #85B7EB;
+}
+
+/* BI "click-hint" override */
+.bi-click-hint {
+  background: rgba(55, 138, 221, 0.15);
+  color: #85B7EB;
+}
+.bi-project-card:hover .bi-click-hint {
+  background: rgba(55, 138, 221, 0.28);
+}
+
+/* ── BI IFRAME MODAL ── */
+.bi-iframe-modal {
+  width: min(1100px, 96vw);
+  max-height: 92vh;
+  padding: 0;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-color: rgba(55, 138, 221, 0.3);
+}
+.bi-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  background: rgba(10, 25, 50, 0.5);
+  flex-shrink: 0;
+}
+.bi-modal-title-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.bi-modal-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #378ADD;
+  box-shadow: 0 0 8px rgba(55, 138, 221, 0.7);
+  animation: bi-pulse 2s ease-in-out infinite;
+  flex-shrink: 0;
+}
+.bi-modal-header h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0;
+}
+.bi-modal-close {
+  position: static !important;
+  flex-shrink: 0;
+}
+.bi-iframe-wrapper {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: relative;
+  min-height: 0;
+}
+#bi-iframe {
+  width: 100%;
+  height: 660px;
+  border: none;
+  display: block;
+  background: #0f1923;
+}
+
+@media (max-width: 820px) {
+  .bi-iframe-modal { width: 98vw; max-height: 90vh; }
+  #bi-iframe { height: 720px; }
+}

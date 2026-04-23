@@ -294,6 +294,77 @@
           </div>
           <div class="click-hint">Clic para detalles <span>&gt;</span></div>
         </div>
+
+        <!-- BI PROJECT CARD -->
+        <div class="card reveal project-card bi-project-card" id="bi-card" onclick="openBIModal()">
+          <div class="bi-card-badge"><span class="bi-live-dot"></span>Demo en vivo</div>
+          <h3>Dashboard BI · Centro de Operaciones</h3>
+          <p>Dashboard de inteligencia operativa: KPIs en tiempo real, tendencias de incidentes, análisis por ciudad y estado de zonas con filtros interactivos.</p>
+          <div class="bi-card-preview" aria-hidden="true">
+            <!-- Mini visual preview of the BI dashboard -->
+            <svg viewBox="0 0 360 140" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <!-- Background -->
+              <rect width="360" height="140" rx="8" fill="#0f1923"/>
+              <!-- Header bar -->
+              <rect x="0" y="0" width="360" height="22" rx="8" fill="rgba(255,255,255,0.04)"/>
+              <circle cx="14" cy="11" r="4" fill="#378ADD"/>
+              <rect x="24" y="7" width="80" height="5" rx="2" fill="rgba(255,255,255,0.18)"/>
+              <rect x="260" y="6" width="40" height="7" rx="3" fill="rgba(29,158,117,0.3)"/>
+              <rect x="304" y="6" width="42" height="7" rx="3" fill="rgba(55,138,221,0.2)"/>
+              <!-- KPI cards row -->
+              <rect x="8" y="28" width="78" height="32" rx="5" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.08)" stroke-width="0.5"/>
+              <rect x="94" y="28" width="78" height="32" rx="5" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.08)" stroke-width="0.5"/>
+              <rect x="180" y="28" width="78" height="32" rx="5" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.08)" stroke-width="0.5"/>
+              <rect x="266" y="28" width="86" height="32" rx="5" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.08)" stroke-width="0.5"/>
+              <!-- KPI values -->
+              <text x="16" y="41" fill="rgba(255,255,255,0.4)" font-size="5" font-family="monospace">INCIDENTES</text>
+              <text x="16" y="53" fill="#e8e6df" font-size="10" font-weight="bold" font-family="monospace">1,847</text>
+              <text x="102" y="41" fill="rgba(255,255,255,0.4)" font-size="5" font-family="monospace">T. RESPUESTA</text>
+              <text x="102" y="53" fill="#5DCAA5" font-size="10" font-weight="bold" font-family="monospace">4.3m</text>
+              <text x="188" y="41" fill="rgba(255,255,255,0.4)" font-size="5" font-family="monospace">COBERTURA</text>
+              <text x="188" y="53" fill="#5DCAA5" font-size="10" font-weight="bold" font-family="monospace">97%</text>
+              <text x="274" y="41" fill="rgba(255,255,255,0.4)" font-size="5" font-family="monospace">ALERTAS</text>
+              <text x="274" y="53" fill="#E24B4A" font-size="10" font-weight="bold" font-family="monospace">23</text>
+              <!-- Progress bars -->
+              <rect x="16" y="55" width="62" height="2" rx="1" fill="rgba(255,255,255,0.08)"/>
+              <rect x="16" y="55" width="46" height="2" rx="1" fill="#378ADD"/>
+              <rect x="102" y="55" width="62" height="2" rx="1" fill="rgba(255,255,255,0.08)"/>
+              <rect x="102" y="55" width="55" height="2" rx="1" fill="#1D9E75"/>
+              <rect x="188" y="55" width="62" height="2" rx="1" fill="rgba(255,255,255,0.08)"/>
+              <rect x="188" y="55" width="60" height="2" rx="1" fill="#5DCAA5"/>
+              <rect x="274" y="55" width="70" height="2" rx="1" fill="rgba(255,255,255,0.08)"/>
+              <rect x="274" y="55" width="16" height="2" rx="1" fill="#E24B4A"/>
+              <!-- Line chart card -->
+              <rect x="8" y="68" width="178" height="62" rx="5" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.08)" stroke-width="0.5"/>
+              <text x="16" y="78" fill="rgba(255,255,255,0.35)" font-size="5" font-family="monospace">TENDENCIA MENSUAL</text>
+              <!-- Line chart path 2025 -->
+              <polyline points="16,120 46,115 76,108 106,112 136,118 166,110" fill="none" stroke="#378ADD" stroke-width="1.5" opacity="0.6" stroke-dasharray="3,2"/>
+              <!-- Line chart path 2026 -->
+              <polyline points="16,118 46,122 76,114 106,116" fill="none" stroke="#1D9E75" stroke-width="1.5"/>
+              <!-- Donut chart card -->
+              <rect x="194" y="68" width="158" height="62" rx="5" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.08)" stroke-width="0.5"/>
+              <text x="202" y="78" fill="rgba(255,255,255,0.35)" font-size="5" font-family="monospace">TIPO DE INCIDENTE</text>
+              <!-- Donut simplified -->
+              <circle cx="240" cy="104" r="20" fill="none" stroke="#185FA5" stroke-width="8" stroke-dasharray="47 53" stroke-dashoffset="0"/>
+              <circle cx="240" cy="104" r="20" fill="none" stroke="#0F6E56" stroke-width="8" stroke-dasharray="28 72" stroke-dashoffset="-47"/>
+              <circle cx="240" cy="104" r="20" fill="none" stroke="#534AB7" stroke-width="8" stroke-dasharray="14 86" stroke-dashoffset="-75"/>
+              <!-- Legend items donut -->
+              <rect x="268" y="90" width="6" height="6" rx="1" fill="#185FA5"/>
+              <text x="277" y="96" fill="rgba(255,255,255,0.5)" font-size="5" font-family="monospace">Intrusión</text>
+              <rect x="268" y="100" width="6" height="6" rx="1" fill="#0F6E56"/>
+              <text x="277" y="106" fill="rgba(255,255,255,0.5)" font-size="5" font-family="monospace">CCTV</text>
+              <rect x="268" y="110" width="6" height="6" rx="1" fill="#534AB7"/>
+              <text x="277" y="116" fill="rgba(255,255,255,0.5)" font-size="5" font-family="monospace">Acceso</text>
+            </svg>
+          </div>
+          <div class="tag-row">
+            <div class="tag tag-bi">CHART.JS</div>
+            <div class="tag tag-bi">BUSINESS INTELLIGENCE</div>
+            <div class="tag tag-bi">INTERACTIVO</div>
+          </div>
+          <div class="click-hint bi-click-hint">Ver dashboard en vivo <span>▶</span></div>
+        </div>
+
       </div>
     </section>
 
@@ -519,6 +590,31 @@
           <div class="page-indicator"><span id="page-current">1</span>/3</div>
           <button class="page-btn" id="page-next" aria-label="Página siguiente">→</button>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BI DASHBOARD MODAL -->
+  <div class="modal-backdrop" id="bi-modal" aria-hidden="true">
+    <div class="modal bi-iframe-modal" role="dialog" aria-modal="true" aria-labelledby="bi-modal-title">
+      <div class="bi-modal-header">
+        <div class="bi-modal-title-group">
+          <div class="bi-modal-dot"></div>
+          <div>
+            <h3 id="bi-modal-title">Dashboard BI · Centro de Operaciones</h3>
+            <p class="modal-label">Demo Interactiva en Vivo</p>
+          </div>
+        </div>
+        <button class="modal-close bi-modal-close" id="bi-modal-close" aria-label="Cerrar dashboard">×</button>
+      </div>
+      <div class="bi-iframe-wrapper">
+        <iframe
+          id="bi-iframe"
+          src="mockups/BI/BI.html"
+          title="Dashboard BI interactivo — Centro de Operaciones"
+          loading="lazy"
+          sandbox="allow-scripts allow-same-origin"
+        ></iframe>
       </div>
     </div>
   </div>

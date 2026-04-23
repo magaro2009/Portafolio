@@ -134,6 +134,7 @@ window.addEventListener("keydown", (e) => {
   if (e.key === "Escape") {
     closeLightbox();
     closeModal();
+    if (typeof closeBIModal === "function") closeBIModal();
   }
 });
 
@@ -239,7 +240,7 @@ if (pageNext) {
   pageNext.addEventListener("click", () => setPage(currentPage + 1));
 }
 
-document.querySelectorAll(".project-card").forEach(card => {
+document.querySelectorAll(".project-card:not(.bi-project-card)").forEach(card => {
   card.setAttribute("tabindex", "0");
   card.setAttribute("role", "button");
   const handler = () => {
@@ -261,6 +262,44 @@ document.querySelectorAll(".project-card").forEach(card => {
     }
   });
 });
+
+// ── BI DASHBOARD MODAL ──
+const biModal = document.getElementById("bi-modal");
+const biModalClose = document.getElementById("bi-modal-close");
+
+function openBIModal() {
+  if (!biModal) return;
+  biModal.classList.add("show");
+  biModal.setAttribute("aria-hidden", "false");
+  document.body.style.overflow = "hidden";
+}
+
+function closeBIModal() {
+  if (!biModal) return;
+  biModal.classList.remove("show");
+  biModal.setAttribute("aria-hidden", "true");
+  document.body.style.overflow = "";
+}
+
+if (biModalClose) biModalClose.addEventListener("click", closeBIModal);
+if (biModal) {
+  biModal.addEventListener("click", (e) => {
+    if (e.target === biModal) closeBIModal();
+  });
+}
+
+// Make BI card keyboard accessible
+const biCard = document.getElementById("bi-card");
+if (biCard) {
+  biCard.setAttribute("tabindex", "0");
+  biCard.setAttribute("role", "button");
+  biCard.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      openBIModal();
+    }
+  });
+}
 
 function toggleMenu() {
   const menu = document.getElementById("mobile-nav");
