@@ -266,9 +266,21 @@ document.querySelectorAll(".project-card:not(.bi-project-card)").forEach(card =>
 // ── BI DASHBOARD MODAL ──
 const biModal = document.getElementById("bi-modal");
 const biModalClose = document.getElementById("bi-modal-close");
+const BI_SRC = "mockups/BI/BI.html";
 
 function openBIModal() {
   if (!biModal) return;
+  const iframe = document.getElementById("bi-iframe");
+  // Carga lazy real: inyectar src solo cuando el modal se abre
+  if (iframe && !iframe.src.includes(BI_SRC)) {
+    iframe.src = BI_SRC;
+  }
+  // En móvil posicionar como bottom-sheet (align-self: flex-end en .bi-iframe-modal)
+  if (window.innerWidth <= 820) {
+    biModal.style.alignItems = "flex-end";
+  } else {
+    biModal.style.alignItems = "";
+  }
   biModal.classList.add("show");
   biModal.setAttribute("aria-hidden", "false");
   document.body.style.overflow = "hidden";
@@ -279,6 +291,11 @@ function closeBIModal() {
   biModal.classList.remove("show");
   biModal.setAttribute("aria-hidden", "true");
   document.body.style.overflow = "";
+  // Limpiar iframe al cerrar para liberar memoria
+  setTimeout(() => {
+    const iframe = document.getElementById("bi-iframe");
+    if (iframe) iframe.src = "about:blank";
+  }, 400); // Esperar a que la transición de cierre termine
 }
 
 if (biModalClose) biModalClose.addEventListener("click", closeBIModal);
